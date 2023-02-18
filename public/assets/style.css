@@ -30,19 +30,22 @@
     width: 100%;
 
 }
+.border-1{
+    border: 1px solid #ccc;
+    padding: 3px;
+}
 .section-one .checkbox-container {
     width: 100px;
-    border: 1px solid;
+    border: 1px solid #ccc;
     border-radius: 5px;
     margin-left: 20px;
 }
 .checkbox-container {
-    border: 1px solid;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    margin-left: 20px;
 }
 .checkbox-container-3{
-    border: 1px solid;
+    border: 1px solid #ccc;
     padding: auto;
     border-radius: 5px;
     margin-left: 20px;

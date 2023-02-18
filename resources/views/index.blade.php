@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div class="container border-1" style="padding:3px">
     <div class="container section-one">
         <div class="row">
             <div class="col-md-3">
@@ -303,58 +304,236 @@
             <div class="col-md-4">
                 <h3 class="bold">Sale Details - Applicant 1</h3>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 p-15">
                 <div class="checkbox-container" style="">
                     <input type="checkbox">
                     <span>Joint</span>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 p-15">
                 <div class="checkbox-container" style="">
                     <input type="checkbox">
                     <span>Single</span>
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 p-15">
                 <label class="btn btn-title">Percentage Of Owner </label>
+            </div>
+            <div class="col-md-2 p-15">
+                <div class="checkbox-container" style="">
+                    <input type="text" class="form-control">
+                    <span>%</span>
+                </div>
             </div>
 
         </div>
+       
         <div class="row">
-            <div class="col-md-2">
-                <div class="form-group d-flex">
-                    <label class="btn btn-title">Package/s:</label>
+            <div class="col-md-4">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Title:</label>
+                    <input type="text" class="ml-5 form-control">
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="checkbox-container" style="">
-                    <input type="checkbox">
-                    <span>$500</span>
+            <div class="col-md-5">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Name:</label>
+                    <input type="text" class="ml-5 form-control">
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="checkbox-container" style="">
-                    <input type="checkbox">
-                    <span>$1000</span>
+            <div class="col-md-3">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">DOB:</label>
+                    <input type="text" class="ml-5 form-control">
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="checkbox-container" style="">
-                    <input type="checkbox">
-                    <span>$2000</span>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <label class="btn btn-title">Package Total
-                    Amount: </label>
-            </div>
-            <div class="col-md-2">
-                <input type="text" class="ml-5 form-control">
-            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Gender:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Address:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group d-flex p-1">
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Post or Zip code:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Customer ID:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Phone No:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Mobile No:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Email:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Application ID:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            
         </div>
 
     </div>
+    <div class="container section-six">
+        <div class="row">
+            <div class="col-md-4">
+                <h3 class="bold">Sale Details - Applicant 2</h3>
+            </div>
+            <div class="col-md-2 p-15">
+                <div class="checkbox-container" style="">
+                    <input type="checkbox">
+                    <span>Joint</span>
+                </div>
+            </div>
+            <div class="col-md-2 p-15">
+                <div class="checkbox-container" style="">
+                    <input type="checkbox">
+                    <span>Single</span>
+                </div>
+            </div>
+            <div class="col-md-2 p-15">
+                <label class="btn btn-title">Percentage Of Owner </label>
+            </div>
+            <div class="col-md-2 p-15">
+                <div class="checkbox-container" style="">
+                    <input type="text" class="form-control">
+                    <span>%</span>
+                </div>
+            </div>
+
+        </div>
+       
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Title:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Name:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">DOB:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Gender:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Address:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group d-flex p-1">
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Post or Zip code:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Customer ID:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Phone No:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Mobile No:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Email:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group d-flex p-1">
+                    <label class="btn btn-title">Application ID:</label>
+                    <input type="text" class="ml-5 form-control">
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
     <script></script>
 </body>
 
