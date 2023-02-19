@@ -5,14 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    	<!-- Toastr -->
+	
     <title>Document</title>
     <link href="{{ asset('assets/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <script src="{{ asset('assets/style.js') }}" ></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}" id="token"/>
+
 </head>
 
 <body>
+  <form  action="{{route('store-applicant')}}" id='store-phone' method="POST">
+    @csrf
     <div class="container border-1" style="padding:3px">
     <div class="container section-one">
         <div class="row">
@@ -306,13 +317,13 @@
             </div>
             <div class="col-md-2 p-15">
                 <div class="checkbox-container" style="">
-                    <input type="checkbox">
+                    <input type="checkbox" name="joint1">
                     <span>Joint</span>
                 </div>
             </div>
             <div class="col-md-2 p-15">
                 <div class="checkbox-container" style="">
-                    <input type="checkbox">
+                    <input type="checkbox" class="form-check-input" name="single1">
                     <span>Single</span>
                 </div>
             </div>
@@ -321,7 +332,7 @@
             </div>
             <div class="col-md-2 p-15">
                 <div class="checkbox-container" style="">
-                    <input type="text" class="form-control">
+                    <input type="text" name="percentage1" class="form-control">
                     <span>%</span>
                 </div>
             </div>
@@ -332,19 +343,19 @@
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Title:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="title1" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Name:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="name1" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">DOB:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="dob1" class="ml-5 form-control">
                 </div>
             </div>
         </div>
@@ -353,13 +364,13 @@
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Gender:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="gender" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-7">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Address:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="address1" class="ml-5 form-control">
                 </div>
             </div>
             
@@ -373,13 +384,13 @@
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Post or Zip code:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="post1" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Customer ID:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text"  name="customer_id1" class="ml-5 form-control">
                 </div>
             </div>
             
@@ -388,13 +399,13 @@
             <div class="col-md-7">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Phone No:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="phone_no1" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Mobile No:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="mobile_no1" class="ml-5 form-control">
                 </div>
             </div>
             
@@ -403,13 +414,13 @@
             <div class="col-md-8">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Email:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="email1" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
-                    <label class="btn btn-title">Application ID:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <label class="btn btn-title application-btn">Application ID:</label>
+                    <input type="text" name="application_id1" class="ml-5 form-control application-input">
                 </div>
             </div>
             
@@ -423,13 +434,13 @@
             </div>
             <div class="col-md-2 p-15">
                 <div class="checkbox-container" style="">
-                    <input type="checkbox">
+                    <input type="checkbox" name="joint2">
                     <span>Joint</span>
                 </div>
             </div>
             <div class="col-md-2 p-15">
                 <div class="checkbox-container" style="">
-                    <input type="checkbox">
+                    <input type="checkbox" name="single2">
                     <span>Single</span>
                 </div>
             </div>
@@ -438,7 +449,7 @@
             </div>
             <div class="col-md-2 p-15">
                 <div class="checkbox-container" style="">
-                    <input type="text" class="form-control">
+                    <input type="text" name="percentage2" class="form-control">
                     <span>%</span>
                 </div>
             </div>
@@ -449,19 +460,19 @@
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Title:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="title2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Name:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="name2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">DOB:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="dob2" class="ml-5 form-control">
                 </div>
             </div>
         </div>
@@ -470,13 +481,13 @@
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Gender:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="gender2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-7">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Address:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="address2" class="ml-5 form-control">
                 </div>
             </div>
             
@@ -490,13 +501,13 @@
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Post or Zip code:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="post2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Customer ID:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="customer_id2" class="ml-5 form-control">
                 </div>
             </div>
             
@@ -505,13 +516,13 @@
             <div class="col-md-7">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Phone No:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="phone_no2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Mobile No:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="mobile_no2" class="ml-5 form-control">
                 </div>
             </div>
             
@@ -520,21 +531,42 @@
             <div class="col-md-8">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Email:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <input type="text" name="email2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
-                    <label class="btn btn-title">Application ID:</label>
-                    <input type="text" class="ml-5 form-control">
+                    <label class="btn btn-title application-btn">Application ID:</label>
+                    <input type="text" name="application2" class="ml-5 form-control application-input">
+             
                 </div>
             </div>
             
         </div>
-
+     <button type="button" class="btn btn-primary ajax" >Submit</button>
     </div>
+</form>  
 </div>
-    <script></script>
+    <script>
+        $(document).ready(function() {
+			toastr.options = {
+				'closeButton': true,
+				'debug': false,
+				'newestOnTop': false,
+				'progressBar': false,
+				'positionClass': 'toast-top-right',
+				'preventDuplicates': false,
+				'showDuration': '1000',
+				'hideDuration': '1000',
+				'timeOut': '5000',
+				'extendedTimeOut': '1000',
+				'showEasing': 'swing',
+				'hideEasing': 'linear',
+				'showMethod': 'fadeIn',
+				'hideMethod': 'fadeOut',
+			}
+		});
+    </script>
 </body>
 
 </html>

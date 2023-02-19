@@ -1,18 +1,26 @@
-.btn-title{
+.section-one .btn-title{
     background: #00c1ff;
     color: white;
     font-weight: 900 !important;
     cursor: auto !important;
 }
 
+.btn-title{
+    background: #8080805e;
+    color: grey;
+    font-weight: 900 !important;
+    cursor: auto !important;
+}
 .btn-title:hover{
+    background: #8080805e;
+    color: grey;
+}
+.section-one .btn-title:hover{
     background: #00c1ff;
     color: white;
 }
 
-.btn:hover{
-    color: white !important;
-}
+
 .d-flex{
     display: flex;
 
@@ -29,6 +37,15 @@
 .section-two .checkbox-container {
     width: 100%;
 
+}
+.application-btn, .application-input
+{
+    background:#ff000040 !important;
+    border: 1px solid red !important;
+}
+.application-btn:hover
+{
+    background:#ff000040;
 }
 .border-1{
     border: 1px solid #ccc;
