@@ -17,8 +17,8 @@ class ApplicantController extends Controller
     $data['title'] = 'application';       
         
     $rules = [
-        'email1'          => 'required|string',
-        'email2'          => 'required|string',
+        'email1'          => 'required|email|unique',
+        'email2'          => 'required|email|unique',
         'name1'          => 'required',
         'name2'          => 'required',
         'title1'          => 'required|string',
@@ -73,8 +73,14 @@ class ApplicantController extends Controller
             $app1->name = $request->name1;
             $app1->phone_no = $request->phone_no1;
             $app1->mobile_no = $request->mobile_no1;
+            $app1->gender = $request->gender1;
+            $app1->address = $request->address1;
             $app1->email = $request->email1;
             $app1->application_id = $request->application_id1;
+            $app1->post_or_zip = $request->post1;
+            $app1->customer_id = $request->customer_id1;
+            $app1->gender = $request->gender1;
+
             $app1->save();
 
             $app1 = new Applicant();
@@ -93,5 +99,18 @@ class ApplicantController extends Controller
 
        }
        return $data;
+}
+
+public function getAppData(Request $request){
+    if($request->email){
+    $data = Applicant::where('email',$request->email)->first();
+    }elseif($request->mobile){
+    $data = Applicant::where('mobile_no',$request->mobile)->first();
+    }
+    if($data){
+        return response()->json(['status'=>true,'data'=>$data]);
+    }else{
+        return response()->json([]);
+    }
 }
 }

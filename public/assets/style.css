@@ -4,7 +4,19 @@
     font-weight: 900 !important;
     cursor: auto !important;
 }
+span{
+    display: inline-block;
+    vertical-align: super;
+    line-height: normal;
 
+}
+.percen{
+    display: flex;
+}
+.percen input{
+border: 1px solid #fff;
+height: 30px !important;
+}
 .btn-title{
     background: #8080805e;
     color: grey;

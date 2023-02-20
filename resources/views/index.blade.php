@@ -331,8 +331,8 @@
                 <label class="btn btn-title">Percentage Of Owner </label>
             </div>
             <div class="col-md-2 p-15">
-                <div class="checkbox-container" style="">
-                    <input type="text" name="percentage1" class="form-control">
+                <div class="checkbox-container percen"  style="">
+                    <input type="text"  id="percentage1" name="percentage1" class="form-control">
                     <span>%</span>
                 </div>
             </div>
@@ -343,19 +343,19 @@
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Title:</label>
-                    <input type="text" name="title1" class="ml-5 form-control">
+                    <input type="text" id="title1" name="title1" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Name:</label>
-                    <input type="text" name="name1" class="ml-5 form-control">
+                    <input type="text" id="name1" name="name1" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">DOB:</label>
-                    <input type="text" name="dob1" class="ml-5 form-control">
+                    <input type="text" id="dob1" name="dob1" class="ml-5 form-control">
                 </div>
             </div>
         </div>
@@ -364,13 +364,13 @@
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Gender:</label>
-                    <input type="text" name="gender" class="ml-5 form-control">
+                    <input type="text" id="gender1" name="gender1" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-7">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Address:</label>
-                    <input type="text" name="address1" class="ml-5 form-control">
+                    <input type="text" id="address1" name="address1" class="ml-5 form-control">
                 </div>
             </div>
             
@@ -384,13 +384,13 @@
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Post or Zip code:</label>
-                    <input type="text" name="post1" class="ml-5 form-control">
+                    <input type="text" id="post1" name="post1" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Customer ID:</label>
-                    <input type="text"  name="customer_id1" class="ml-5 form-control">
+                    <input type="text"  name="customer_id1" id="customer_id1" class="ml-5 form-control">
                 </div>
             </div>
             
@@ -399,13 +399,13 @@
             <div class="col-md-7">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Phone No:</label>
-                    <input type="text" name="phone_no1" class="ml-5 form-control">
+                    <input type="text" name="phone_no1" id="phone_no1" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Mobile No:</label>
-                    <input type="text" name="mobile_no1" class="ml-5 form-control">
+                    <input type="text" name="mobile_no1" id="mobile_no1" class="ml-5 form-control mobile_no1 ">
                 </div>
             </div>
             
@@ -414,13 +414,13 @@
             <div class="col-md-8">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Email:</label>
-                    <input type="text" name="email1" class="ml-5 form-control">
+                    <input type="text" name="email1" id="email1" class="ml-5 form-control email1">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title application-btn">Application ID:</label>
-                    <input type="text" name="application_id1" class="ml-5 form-control application-input">
+                    <input type="text" name="application_id1"  id="application_id1" class="ml-5 form-control application-input">
                 </div>
             </div>
             
@@ -448,7 +448,7 @@
                 <label class="btn btn-title">Percentage Of Owner </label>
             </div>
             <div class="col-md-2 p-15">
-                <div class="checkbox-container" style="">
+                <div class="checkbox-container percen" style="">
                     <input type="text" name="percentage2" class="form-control">
                     <span>%</span>
                 </div>
@@ -548,6 +548,8 @@
 </form>  
 </div>
     <script>
+        var fetchApplicat = "{{route('fetch-app1')}}";
+   
         $(document).ready(function() {
 			toastr.options = {
 				'closeButton': true,
@@ -566,6 +568,57 @@
 				'hideMethod': 'fadeOut',
 			}
 		});
+    $("#email1").on("change",function(){
+        email = $(this).val()
+        console.log($(this).attr('name'))
+        $.ajax({
+        url: fetchApplicat,
+        type: "GET",
+        data: {'email':email},
+        dataType:'JSON',
+        
+        success: function(response){
+            if(response.status){
+                $('#name1').val(response.data.name)
+                $('#title1').val(response.data.title)
+                $('#dob1').val(response.data.dob)
+                $('#gender1').val(response.data.gender)
+                $('#address1').val(response.data.address)
+                $('#post1').val(response.data.post_or_zip)
+                $('#phone_no1').val(response.data.phone_no)
+                $('#mobile_no1').val(response.data.mobile_no)
+                $('#customer_id1').val(response.data.customer_id)
+                $('#email1').val(response.data.email)
+                $('#application_id1').val(response.data.application_id)
+            }
+        }
+        }) });
+        $("#mobile_no1").on("change",function(){
+        mobile = $(this).val()
+        console.log($(this).attr('name'))
+        $.ajax({
+        url: fetchApplicat,
+        type: "GET",
+        data: {'mobile':mobile},
+        dataType:'JSON',
+        
+        success: function(response){
+            if(response.status){
+                $('#name1').val(response.data.name)
+                $('#title1').val(response.data.title)
+                $('#dob1').val(response.data.dob)
+                $('#gender1').val(response.data.gender)
+                $('#address1').val(response.data.address)
+                $('#post1').val(response.data.post_or_zip)
+                $('#phone_no1').val(response.data.phone_no)
+                $('#mobile_no1').val(response.data.mobile_no)
+                $('#customer_id1').val(response.data.customer_id)
+                $('#application_id1').val(response.data.application_id)
+                $('#email1').val(response.data.email)
+
+            }
+        }
+        }) });
     </script>
 </body>
 
