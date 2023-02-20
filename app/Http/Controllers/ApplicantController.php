@@ -17,15 +17,15 @@ class ApplicantController extends Controller
     $data['title'] = 'application';       
         
     $rules = [
-        'email1'          => 'required|email|unique',
-        'email2'          => 'required|email|unique',
+        'email1'          => 'required|email|unique:users,email',
+        'email2'          => 'required|email|unique:users,email',
         'name1'          => 'required',
         'name2'          => 'required',
         'title1'          => 'required|string',
         'title2'          => 'required|string',
         'dob1'            => 'required',
         'dob2'            => 'required',
-        'gender'            => 'required',
+        'gender1'            => 'required',
         'gender2'            => 'required',
         'address2'           => 'required',
         'address1'           => 'required',
@@ -88,6 +88,11 @@ class ApplicantController extends Controller
             $app1->title = $request->title2;
             $app1->dob = $request->dob2;
             $app1->name = $request->name2;
+            $app1->post_or_zip = $request->post2;
+            $app1->address = $request->address2;
+            $app1->customer_id = $request->customer_id2;
+            $app1->application_id = $request->application2;
+            $app1->gender = $request->gender2;
             $app1->phone_no = $request->phone_no2;
             $app1->mobile_no = $request->mobile_no2;
             $app1->email = $request->email2;

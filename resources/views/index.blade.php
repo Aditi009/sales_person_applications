@@ -460,19 +460,19 @@
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Title:</label>
-                    <input type="text" name="title2" class="ml-5 form-control">
+                    <input type="text" name="title2" id="title2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Name:</label>
-                    <input type="text" name="name2" class="ml-5 form-control">
+                    <input type="text" name="name2" id="name2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">DOB:</label>
-                    <input type="text" name="dob2" class="ml-5 form-control">
+                    <input type="text" name="dob2" id="dob2" class="ml-5 form-control">
                 </div>
             </div>
         </div>
@@ -481,13 +481,13 @@
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Gender:</label>
-                    <input type="text" name="gender2" class="ml-5 form-control">
+                    <input type="text" name="gender2"  id="gender2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-7">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Address:</label>
-                    <input type="text" name="address2" class="ml-5 form-control">
+                    <input type="text" name="address2"  id="address2" class="ml-5 form-control">
                 </div>
             </div>
             
@@ -501,13 +501,13 @@
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Post or Zip code:</label>
-                    <input type="text" name="post2" class="ml-5 form-control">
+                    <input type="text" name="post2" id="post2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Customer ID:</label>
-                    <input type="text" name="customer_id2" class="ml-5 form-control">
+                    <input type="text" name="customer_id2" id="customer_id2" class="ml-5 form-control">
                 </div>
             </div>
             
@@ -516,13 +516,13 @@
             <div class="col-md-7">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Phone No:</label>
-                    <input type="text" name="phone_no2" class="ml-5 form-control">
+                    <input type="text" name="phone_no2" id="phone_no2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Mobile No:</label>
-                    <input type="text" name="mobile_no2" class="ml-5 form-control">
+                    <input type="text" name="mobile_no2"  id="mobile_no2" class="ml-5 form-control">
                 </div>
             </div>
             
@@ -531,13 +531,13 @@
             <div class="col-md-8">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title">Email:</label>
-                    <input type="text" name="email2" class="ml-5 form-control">
+                    <input type="text" name="email2"  id="email2" class="ml-5 form-control">
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="form-group d-flex p-1">
                     <label class="btn btn-title application-btn">Application ID:</label>
-                    <input type="text" name="application2" class="ml-5 form-control application-input">
+                    <input type="text" name="application2" id="application2" class="ml-5 form-control application-input">
              
                 </div>
             </div>
@@ -593,6 +593,7 @@
             }
         }
         }) });
+
         $("#mobile_no1").on("change",function(){
         mobile = $(this).val()
         console.log($(this).attr('name'))
@@ -616,6 +617,61 @@
                 $('#application_id1').val(response.data.application_id)
                 $('#email1').val(response.data.email)
 
+            }
+        }
+        })
+
+        
+    
+    });
+
+    $("#email2").on("change",function(){
+        email = $(this).val()
+        console.log($(this).attr('name'))
+        $.ajax({
+        url: fetchApplicat,
+        type: "GET",
+        data: {'email':email},
+        dataType:'JSON',
+        
+        success: function(response){
+            if(response.status){
+                $('#name2').val(response.data.name)
+                $('#title2').val(response.data.title)
+                $('#dob2').val(response.data.dob)
+                $('#gender2').val(response.data.gender)
+                $('#address2').val(response.data.address)
+                $('#post2').val(response.data.post_or_zip)
+                $('#phone_no2').val(response.data.phone_no)
+                $('#mobile_no2').val(response.data.mobile_no)
+                $('#customer_id2').val(response.data.customer_id)
+                $('#email2').val(response.data.email)
+                $('#application2').val(response.data.application_id)
+            }
+        }
+        }) });
+        $("#mobile_no2").on("change",function(){
+        mobile = $(this).val()
+        console.log($(this).attr('name'))
+        $.ajax({
+        url: fetchApplicat,
+        type: "GET",
+        data: {'mobile':mobile},
+        dataType:'JSON',
+        
+        success: function(response){
+            if(response.status){
+                $('#name2').val(response.data.name)
+                $('#title2').val(response.data.title)
+                $('#dob2').val(response.data.dob)
+                $('#gender2').val(response.data.gender)
+                $('#address2').val(response.data.address)
+                $('#post2').val(response.data.post_or_zip)
+                $('#phone_no2').val(response.data.phone_no)
+                $('#mobile_no2').val(response.data.mobile_no)
+                $('#customer_id2').val(response.data.customer_id)
+                $('#email2').val(response.data.email)
+                $('#application2').val(response.data.application_id)
             }
         }
         }) });
