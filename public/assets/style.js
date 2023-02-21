@@ -47,104 +47,14 @@ document.addEventListener("click", function (e) {
     var URL = e.target.form.getAttribute("action");
     var Method = e.target.form.getAttribute("method");
     var Id = e.target.form.getAttribute("id");
+    if(Id == null){
+      Id = "myapplicantform";
+    }
     var form = document.getElementById(Id);
     var formData = new FormData(form);
 
     e.target.disabled = false;
-    switch (e.target.form.id) {
-      case "create-item-transfer-tracking":
-      case "edit-item-transfer-tracking":
-        formData.append(
-          "transfer_items_count",
-          $("#" + e.target.form.id).find(".items").length
-        );
-        formData.append(
-          "new_transfer_items_count",
-          $("#" + e.target.form.id).find(".new-items").length
-        );
-        break;
-      case "project-estimation-costume-project":
-        formData = appendCostumeData(e.target.form.id, formData);
-        var jsonDatesArr = getMascotJSONDatesArray();
-        var logosArr = getLogoArray(),
-          jsonPackageChecklist = getMascotPackagingChecklistArray();
-
-        formData.append("jsonDates", JSON.stringify(jsonDatesArr));
-        formData.append("json_logos", JSON.stringify(logosArr));
-        formData.append(
-          "json_packaging_checklist",
-          JSON.stringify(jsonPackageChecklist)
-        );
-
-        break;
-      case "mascot-update-project-estimation":
-        var form = $("#" + e.target.form.id),
-          custumeCount = form.find("a.costumes").length,
-          jsonDatesArr = getMascotJSONDatesArray(),
-          jsonMascotImageComments = getMascotImageComments(custumeCount),
-          logosArr = getLogoArray(),
-          jsonPackageChecklist = getMascotPackagingChecklistArray();
-
-        formData.append("costume_count", custumeCount);
-        formData.append("jsonDates", JSON.stringify(jsonDatesArr));
-        formData.append(
-          "image_comments",
-          JSON.stringify(jsonMascotImageComments)
-        );
-        formData.append("json_logos", JSON.stringify(logosArr));
-        formData.append(
-          "json_packaging_checklist",
-          JSON.stringify(jsonPackageChecklist)
-        );
-        break;
-      case "create-costume-quality-check":
-        var talentMeasurement = getTalentMeasurements();
-        var talentMeasurementCount = JSON.parse(talentMeasurement).length;
-
-        if (talentMeasurementCount == 0) {
-          $("#voyager-loader").hide();
-          e.target.disabled = false;
-          e.target.innerHTML = button;
-
-          toastr.error("No talent measurement found.");
-          return false;
-        }
-
-        formData.append("talent_measurements", talentMeasurement);
-        break;
-      case "customerEditAddForm":
-        // var count = $('#customerEditAddForm').find('.contact-number-div').length;
-        // var isValidContactNumbers = checkCustomersValidMessages(e.target.form.id);
-
-        // if (!isValidContactNumbers) {
-        //     $('#voyager-loader').hide();
-        //     e.target.disabled = false;
-        //     e.target.innerHTML = button;
-        //     $('#error-msg-0').removeClass('hide');
-        //     $('#error-msg-0').show().html('Please enter valid contact numbers.');
-        //     // toastr.error('Please enter valid contact numbers.');
-        //     return false;
-        // }
-        // formData.append('all_contact_count', count);
-        break;
-      case "create-invoice":
-        var quotationItemsCount =
-          $(".invoice-items").find(".invoive-item").length;
-        if (quotationItemsCount == 0) {
-          $("#voyager-loader").hide();
-          e.target.disabled = false;
-          e.target.innerHTML = button;
-
-          toastr.error(
-            "No invoice items present, please add items to project."
-          );
-
-          return false;
-        }
-        break;
-
-
-    }
+    
     formData.append("_token", document.getElementById("token").content);
 
     fetch(URL, {
@@ -170,57 +80,9 @@ document.addEventListener("click", function (e) {
           }
         } else if (data.response == "success") {
           // e.target.disabled = true;
-          switch (data.title) {
-    
-            case "application":
-              if (data.id !== undefined) {
-                $("#add-category-modal").modal("hide");
-                let option =
-                  '<option value="' +
-                  data.id +
-                  '" selected>' +
-                  data.value +
-                  "</option>";
-                if ($("#category").length > 0) {
-                  $("#category").append(option).trigger("change");
-                  $("#customerPartialsEditAddForm").trigger("reset");
-                }
-              } else {
-                if (data.redirect_url.includes("?")) {
-                  window.location.href =
-                    data.redirect_url + "&q=" + data.message;
-                } else {
-                  window.location.href =
-                    data.redirect_url + "?q=" + data.message;
-                }
-              }
-              break;
-           
-
-          }
+          alert("Saved Successfully");
         } else if (data.response == "failure") {
-          e.target.disabled = false;
-          switch (data.title) {
-            case "finance-management":
-              $("#employeeSalaryModal").modal("hide");
-              break;
-            case "sam":
-              $("#import-sam-modal").modal("hide");
-              break;
-            case "employee-management":
-              $("#import-employee-modal").modal("hide");
-
-              break;
-            case "man-power-costing":
-              $("#man-power-costing-calendar").fullCalendar("refetchEvents");
-              break;
-            case "supplier":
-              $("#import-supply-modal").modal("hide");
-            case "inventory-import":
-              $("#export-inventory").modal("hide");
-            case "inventory-movement-import":
-              $("#import-inventory-movement-modal").modal("hide");
-          }
+         
           toastr.error(data.message);
         }
       });

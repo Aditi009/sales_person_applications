@@ -12,13 +12,16 @@ class ApplicantController extends Controller
     public function index(){
         return view('index');
     }
+    public function index2(){
+        return view('index2');
+    }
 
    public function store(Request $request){
     $data['title'] = 'application';       
         
     $rules = [
-        'email1'          => 'required|email|unique:users,email',
-        'email2'          => 'required|email|unique:users,email',
+        'email1'          => 'required|email',
+        'email2'          => 'required|email',
         'name1'          => 'required',
         'name2'          => 'required',
         'title1'          => 'required|string',
