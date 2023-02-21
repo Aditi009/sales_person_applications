@@ -704,6 +704,7 @@ function checkOver(i) {
 <input id="phone_no1" name="phone_no1" type="text" tabindex="52" value="" data-objref="55 0 R" data-field-name="Text52"/>
 <input id="mobile_no1" name="mobile_no1" type="text" tabindex="53" value="" data-objref="56 0 R" data-field-name="Text53"/>
 <input id="email1" name="email1" type="text" tabindex="54" value="" data-objref="57 0 R" data-field-name="Text54"/>
+ 
 <input id="application_id1" name="application_id1" type="text" tabindex="55" value="wxswqdxwq" data-objref="58 0 R" data-field-name="Text55"/>
 <input id="form56_1" type="checkbox" tabindex="56" data-objref="59 0 R" data-field-name="Check Box56" value="Yes" imageName="formasset/1/form/59 0 R" images="110100"/>
 <input id="form57_1" type="checkbox" tabindex="57" data-objref="60 0 R" data-field-name="Check Box57" value="Yes" imageName="formasset/1/form/60 0 R" images="110100"/>
@@ -743,6 +744,7 @@ function checkOver(i) {
 
 <script>
         var fetchApplicat = "{{route('fetch-app1')}}";
+        var fetchApplicat = "{{route('fetch-emaillist')}}";
    
         $(document).ready(function() {
 			toastr.options = {
@@ -764,7 +766,6 @@ function checkOver(i) {
 		});
     $("#email1").on("change",function(){
         email = $(this).val()
-        console.log($(this).attr('name'))
         $.ajax({
         url: fetchApplicat,
         type: "GET",
@@ -782,7 +783,7 @@ function checkOver(i) {
                 $('#phone_no1').val(response.data.phone_no)
                 $('#mobile_no1').val(response.data.mobile_no)
                 $('#customer_id1').val(response.data.customer_id)
-                $('#email1').val(response.data.email)
+                //$('#email1').val(response.data.email)
                 $('#application_id1').val(response.data.application_id)
             }
         }
@@ -809,7 +810,7 @@ function checkOver(i) {
                 $('#mobile_no1').val(response.data.mobile_no)
                 $('#customer_id1').val(response.data.customer_id)
                 $('#application_id1').val(response.data.application_id)
-                $('#email1').val(response.data.email)
+                //$('#email1').val(response.data.email)
 
             }
         }
@@ -869,6 +870,39 @@ function checkOver(i) {
             }
         }
         }) });
+
+        $("#email1").on("input", function() {
+            var email = $(this).val();
+            checkEmailSuggetion('#firstemail',email);
+        });
+
+        function checkEmailSuggetion(id,s_word){
+            $.ajax({
+        url: fetchApplicat,
+        type: "GET",
+        data: {'email':s_word},
+        dataType:'JSON',
+        
+        success: function(response){
+            if(response.status){
+                //$('#name2').val(response.data)
+                if(response.data.length > 0){
+                    console.log("Data available");
+                    var emails = [];
+                    response.data.forEach((element)=>{
+                        emails.push(element.email);
+                    });
+
+                    console.log(emails);
+                    $("#email1").autocomplete({
+  source: emails
+});
+                }
+
+            }
+        }
+        });
+        }
     </script>
 
 </body>
