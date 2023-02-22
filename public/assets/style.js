@@ -42,23 +42,19 @@ document.addEventListener("click", function (e) {
     e.target.innerHTML = '<i class="fa fa-spinner fa-spin"></i>';
     e.target.disabled = true;
     // $('#voyager-loader').show();
-
     var data = {};
     var URL = e.target.form.getAttribute("action");
     var Method = e.target.form.getAttribute("method");
     var Id = e.target.form.getAttribute("id");
-    if(Id == null){
-      Id = "myapplicantform";
-    }
     var form = document.getElementById(Id);
     var formData = new FormData(form);
-
-    e.target.disabled = false;
-    
     formData.append("_token", document.getElementById("token").content);
 
+    
+    console.log(document.getElementById("token").content)
+
     fetch(URL, {
-      method: Method,
+      method: "POST",
       body: formData,
     }).then((response) => {
       response.json().then((data) => {
@@ -603,318 +599,7 @@ function getCostumeArtworkProcessingArray() {
   return arr;
 }
 
-// Start: image upload on selection
-$(document).ready(function () {
-  // $('body').on('change', 'input[type="file"]', function() {
-  //     var $this           = $(this);
-  //     var ref             = $(this).data('ref');
-  //     var imageFolder     = $(this).data('image-folder');
-  //     var target          = $(this).data('target');
-  //     var files           = this.files;
-  //     var Method          = "POST";
-  //     var formData        = new FormData();
-  //     var csrfToken       = $('#token').attr('content');
-  //     var baseUrl         = $('#baseUrl').attr('content');
-  //     var URL             = baseUrl + '/file-upload';
-  //     var oldImages       = $('input[name="'+target+'"]').val();
 
-  //     if(files.length) {
-
-  //         $.each(files, function(index, value) {
-  //             formData.append('files[]', value);
-  //         });
-
-  //         formData.append("_token", csrfToken);
-  //         formData.append('folder_name', imageFolder);
-  //         formData.append('old_images', oldImages);
-
-  //         $.ajax({
-  //             url: URL,
-  //             type: Method,
-  //             data: formData,
-  //             dataType:'JSON',
-  //             contentType: false,
-  //             cache: false,
-  //             processData: false,
-  //             success: function(response){
-  //                 if(response.status && response.data.length) {
-  //                     $('input[name="'+target+'"]').val(JSON.stringify(response.data));
-  //                     $this.val('');
-  //                     files       = [];
-  //                     $this.files = files;
-
-  //                 } else {
-  //                     // toastr.error(response.message);
-  //                 }
-  //             },
-  //             error: function(jqXHR, textStatus, errorMessage) {
-  //                 // toastr.error('Something went wrong.');
-  //             }
-  //         });
-
-  //     } else {
-  //         var id = $(this).attr('id');
-  //         if (id.indexOf('ref_docx') > -1) {
-  //           toastr.error('File format not supported');
-  //         } else {
-  //           toastr.error('Please select images.');
-  //         }
-
-  //     }
-  // });
-
-  // $('body').on('click', '.btn-link', function() {
-  //     var target = $(this).data('target');
-  //     $('.expansion-panel').each(function() {
-  //         $(this).addClass('collapse');
-  //         $(this).removeClass('show');
-  //     });
-
-  //     $(target).addClass('show');
-  // });
-  $(".collapse").collapse({
-    toggle: false,
-  });
-});
-// End: image upload on selection
-
-// Start: update small sections
-document.addEventListener("click", function (e) {
-  if (e.target.classList.contains("update-section")) {
-    var button = e.target.innerHTML;
-    e.target.innerHTML = '<i class="fa fa-spinner fa-spin"></i>';
-    e.target.disabled = true;
-    var data = {};
-    var URL = e.target.form.getAttribute("action");
-    var Method = e.target.form.getAttribute("method");
-    var Id = e.target.form.getAttribute("id");
-    var classes = e.target.form.getAttribute("class");
-    var classArr = classes.split(" ");
-    var form = document.getElementById(Id);
-    var formData = new FormData(e.target.form);
-
-    if (classArr.includes("update-artwork")) {
-      /** Update costume artwork */
-      var costumeArtworkProcessingArray = getCostumeArtworkProcessingArray();
-      formData.append(
-        "json_costume_artwork_processing",
-        JSON.stringify(costumeArtworkProcessingArray)
-      );
-    } else if (classArr.includes("frm-add-costume-item")) {
-      /** Add costume item */
-      formData = appendCostumeData(e.target.form.id, formData);
-      var jsonDatesArr = getMascotJSONDatesArray();
-      var costumeArtworkProcessingArray = getCostumeArtworkProcessingArray();
-      var imageTaggingArray = getImageTaggingArray();
-
-      formData.append("jsonDates", JSON.stringify(jsonDatesArr));
-      formData.append(
-        "costume_image_tagging",
-        JSON.stringify(imageTaggingArray)
-      );
-      formData.append(
-        "json_costume_artwork_processing",
-        JSON.stringify(costumeArtworkProcessingArray)
-      );
-    } else if (classArr.includes("update-progress-timeline")) {
-      /** Update progress timelime */
-      var jsonDatesArr = getMascotJSONDatesArray();
-      formData.append("jsonDates", JSON.stringify(jsonDatesArr));
-    } else if (classArr.includes("update-image-tagging")) {
-      /** Update costume tagged image */
-      var imageTaggingArray = getImageTaggingArray();
-      formData.append(
-        "costume_image_tagging",
-        JSON.stringify(imageTaggingArray)
-      );
-    } else if (classArr.includes("update-costume-part")) {
-      /** Update costume parts */
-      var cForm = $("#" + Id);
-      var index = cForm.find('input[name="costume_index"]').val();
-      var costumePartCount = cForm.find("a.costume-part-link-" + index).length;
-
-      formData.append("costume_part_count$" + index, costumePartCount);
-
-      for (let subIndex = 0; subIndex < costumePartCount; subIndex++) {
-        var partInventoryCount = cForm.find(
-          ".part-inventories-" + index + "-" + subIndex
-        ).length;
-        formData.append(
-          "costume_part_inventory_count$" + index + "$" + subIndex,
-          partInventoryCount
-        );
-      }
-    } else if (classArr.includes("frm-add-mascot-item")) {
-      /** add mascot item */
-      var custumeCount = $(".nav-link.costumes").length,
-        jsonDatesArr = getMascotJSONDatesArray(),
-        jsonMascotImageComments = getMascotImageComments(custumeCount),
-        logosArr = getLogoArray(),
-        assignedInventory = $("#assignedInventory").val(),
-        costumeArtworkProcessingArray = getCostumeArtworkProcessingArray();
-
-      formData.append("jsonDates", JSON.stringify(jsonDatesArr));
-      formData.append(
-        "image_comments",
-        JSON.stringify(jsonMascotImageComments)
-      );
-      formData.append("json_logos", JSON.stringify(logosArr));
-      formData.append("assignedInventory", assignedInventory);
-      formData.append(
-        "json_costume_artwork_processing",
-        JSON.stringify(costumeArtworkProcessingArray)
-      );
-    } else if (classArr.includes("update-mascot-body-part")) {
-      var custumeCount = $(".nav-link.costumes").length;
-      var jsonMascotImageComments = getMascotImageComments(custumeCount);
-      var assignedInventory = $("#assignedInventory").val();
-
-      formData.append(
-        "image_comments",
-        JSON.stringify(jsonMascotImageComments)
-      );
-      formData.append("assignedInventory", assignedInventory);
-    } else if (classArr.includes("add-prop-item")) {
-      /** Add costume item */
-      formData = appendCostumeData(e.target.form.id, formData);
-      var jsonDatesArr = getMascotJSONDatesArray();
-      var costumeArtworkProcessingArray = getCostumeArtworkProcessingArray();
-      var jsonPackageChecklist = getMascotPackagingChecklistArray();
-
-      formData.append("jsonDates", JSON.stringify(jsonDatesArr));
-      formData.append(
-        "json_costume_artwork_processing",
-        JSON.stringify(costumeArtworkProcessingArray)
-      );
-      formData.append(
-        "json_packaging_checklist",
-        JSON.stringify(jsonPackageChecklist)
-      );
-    } else if (classArr.includes("update-packaging-checklist")) {
-      var jsonPackageChecklist = getMascotPackagingChecklistArray();
-
-      formData.append(
-        "json_packaging_checklist",
-        JSON.stringify(jsonPackageChecklist)
-      );
-    }
-
-    formData.append("_token", document.getElementById("token").content);
-
-    fetch(URL, {
-      method: Method,
-      body: formData,
-    }).then((response) => {
-      response.json().then((data) => {
-        e.target.disabled = false;
-        e.target.innerHTML = button;
-
-        var errors = document.getElementsByClassName("help-block");
-        for (var i = errors.length - 1; i >= 0; i--) {
-          errors[i].parentNode.removeChild(errors[i]);
-        }
-
-        if (data.response == "errors") {
-          showValidationErrors(data.errors, data.title);
-          console.log("0");
-          $(".check").val("0");
-          window.scrollTo(0, 0);
-        } else if (data.response == "success") {
-          if (data.title == "reload") {
-            window.location.href = data.redirect_url + "?q=" + data.message;
-          } else {
-            toastr.success(data.message);
-          }
-        } else if (data.response == "failure") {
-          toastr.error(data.message);
-        }
-      });
-    });
-  }
-});
-// End: update small sections
-
-function getImageTaggingArray() {
-  var taggingArray = [];
-  var jsonTaggingArray = document.getElementsByClassName(
-    "costume-image-tagging"
-  );
-
-  for (var i = jsonTaggingArray.length - 1; i >= 0; i--) {
-    var $commentType =
-      jsonTaggingArray[i].getElementsByClassName("comment-type");
-    var $comment = jsonTaggingArray[i].getElementsByClassName("comment");
-    var tempArr = [];
-
-    for (var j = $comment.length - 1; j >= 0; j--) {
-      var object = {};
-      var commentData = $comment[j].dataset;
-
-      object.comment_type = $commentType[j].value;
-      object.comment = $comment[j].value.trim();
-      object.position_left = commentData.positionLeft;
-      object.postion_right = commentData.positionTop;
-
-      tempArr.push(object);
-    }
-    taggingArray[i] = tempArr;
-  }
-
-  return taggingArray;
-}
-
-function getTalentMeasurements() {
-  var talentsMeasurements = $(".talents");
-  var talentsData = [];
-
-  talentsMeasurements.each(function (index, value) {
-    var talents = [];
-    var measurementId = $(this).data("measurement-id");
-
-    $(value)
-      .find(".quality-repetition-content")
-      .each(function (sIndex, sValue) {
-        var measurements = [];
-        var stageDate = $(sValue).find(".stage-date").val();
-
-        $(sValue)
-          .find(".measurement-row")
-          .each(function (s1Index, s1Value) {
-            var object = new Object();
-            var propertyName = $(s1Value).find("th").html();
-            var inputs = $(s1Value).find("input");
-            var mData = [];
-
-            object["column_name"] = propertyName;
-
-            inputs.each(function (s2Index, s2Value) {
-              var pName = $(s2Value).attr("name");
-              var pValue = $(s2Value).val();
-
-              object[pName] = pValue;
-            });
-
-            measurements.push(object);
-          });
-
-        talents.push({ stage_date: stageDate, repetitions: measurements });
-      });
-
-    talentsData.push({ measurement_id: measurementId, measurements: talents });
-  });
-
-  return JSON.stringify(talentsData);
-}
-
-$(document).on("focus", ".time", function () {
-  $(this).timepicker({
-    timeFormat: "HH:mm",
-    interval: 30,
-    dynamic: false,
-    dropdown: true,
-    scrollbar: true,
-  });
-});
 
 // Check if customer contact numbers are valid
 function checkCustomersValidMessages(formId) {
@@ -1020,7 +705,6 @@ document.addEventListener("click", function (e) {
     var formData = new FormData(e.target.form);
 
     formData.append("_token", document.getElementById("token").content);
-
     fetch(URL, {
       method: Method,
       body: formData,
@@ -1258,6 +942,5 @@ function submitClicked() {
 $(".taginputes").on("beforeItemRemove", function (e) {
   e.cancel = true; //set cancel to false..
 });
-
 
 

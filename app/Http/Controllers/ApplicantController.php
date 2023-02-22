@@ -9,6 +9,18 @@ use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
 {
+    public function getPage(Request $request){
+        $data = '';
+        $email = '';
+       if($request->email){
+         $data = Applicant::where('email',$request->email)->first();
+         if(!$data){
+                $email = $request->email;
+         }
+         
+       }
+       return view('index2',compact('email','data'));
+    }
     public function index(){
         return view('index');
     }

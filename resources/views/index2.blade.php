@@ -4,6 +4,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta charset="utf-8" />
+    <meta name="csrf-token" content="{{ csrf_token() }}" id="token"/>
+
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="formasset/assets/formviewer.css">
@@ -20,7 +22,6 @@
     <script src="{{ asset('assets/style.js') }}" ></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}" id="token"/>
 
     <!-- happy's script end -->
 
@@ -693,17 +694,17 @@ function checkOver(i) {
 <input id="form41_1" type="checkbox" tabindex="41" data-objref="44 0 R" data-field-name="Check Box41" value="Yes" imageName="formasset/1/form/44 0 R" images="110100"/>
 <input id="form42_1" type="checkbox" tabindex="42" value="Yes" data-objref="45 0 R" data-field-name="Check Box42" imageName="formasset/1/form/45 0 R" images="110100" checked="checked"/>
 <input id="form43_1" type="text" tabindex="43" value="" data-objref="46 0 R" data-field-name="Text43"/>
-<input id="title1" name="title1" type="text" tabindex="44" value="" data-objref="47 0 R" data-field-name="Text44"/>
-<input id="name1" name="name1" type="text" tabindex="45" value="" data-objref="48 0 R" data-field-name="Text45"/>
-<input id="dob1" name="dob1" type="date" tabindex="46"  data-objref="49 0 R" data-field-name="Text46"/>
-<input id="gender1" name="gender1"  type="text" tabindex="47" value="" data-objref="50 0 R" data-field-name="Text47"/>
-<input id="address1" name="address1" type="text" tabindex="48" value="" data-objref="51 0 R" data-field-name="Text48"/>
+<input id="title1" name="title1" type="text" tabindex="44"  value="{{$data?$data->title:''}}"  data-objref="47 0 R" data-field-name="Text44"/>
+<input id="name1" name="name1" type="text" tabindex="45"  value="{{$data?$data->name:''}}" data-objref="48 0 R" data-field-name="Text45"/>
+<input id="dob1" name="dob1" type="date"  value="{{$data?date('d/m/Y', strtotime($data->dob)):''}}"  tabindex="46"  data-objref="49 0 R" data-field-name="Text46"/>
+<input id="gender1" name="gender1"  type="text" tabindex="47" value="{{$data?$data->gender:''}}" data-objref="50 0 R" data-field-name="Text47"/>
+<input id="address1" name="address1" type="text" tabindex="48" value="{{$data?$data->address:''}}" data-objref="51 0 R" data-field-name="Text48"/>
 <input id="form49_1" type="text" tabindex="49" value="" data-objref="52 0 R" data-field-name="Text49"/>
-<input id="post1" name="post1" type="text" tabindex="50" value="" data-objref="53 0 R" data-field-name="Text50"/>
-<input id="customer_id1" name="customer_id1" type="text" tabindex="51" value="" data-objref="54 0 R" data-field-name="Text51"/>
-<input id="phone_no1" name="phone_no1" type="text" tabindex="52" value="" data-objref="55 0 R" data-field-name="Text52"/>
-<input id="mobile_no1" name="mobile_no1" type="text" tabindex="53" value="" data-objref="56 0 R" data-field-name="Text53"/>
-<input id="email1" name="email1" type="text" tabindex="54" value="" data-objref="57 0 R" data-field-name="Text54"/>
+<input id="post1" name="post1" type="text" tabindex="50" value="{{$data?$data->post_or_zip:''}}" data-objref="53 0 R" data-field-name="Text50"/>
+<input id="customer_id1" name="customer_id1" type="text" tabindex="51" value="{{$data?$data->customer_id:''}}" data-objref="54 0 R" data-field-name="Text51"/>
+<input id="phone_no1" name="phone_no1" type="text" tabindex="52" value="{{$data?$data->phone_no:''}}" data-objref="55 0 R" data-field-name="Text52"/>
+<input id="mobile_no1" name="mobile_no1" type="text" tabindex="53" value="{{$data?$data->mobile_no:''}}" data-objref="56 0 R" data-field-name="Text53"/>
+<input id="email1" name="email1" type="text" tabindex="54" value="{{$email?$email:$data->email}}" data-objref="57 0 R" data-field-name="Text54"/>
  
 <input id="application_id1" name="application_id1" type="text" tabindex="55" value="wxswqdxwq" data-objref="58 0 R" data-field-name="Text55"/>
 <input id="form56_1" type="checkbox" tabindex="56" data-objref="59 0 R" data-field-name="Check Box56" value="Yes" imageName="formasset/1/form/59 0 R" images="110100"/>
@@ -733,7 +734,12 @@ function checkOver(i) {
 </div>
 </div>
 <section class="mysection">
+@if($data)
 <button type="button" class="ajax">Submit</button>
+@else
+<button type="button" class="ajax">Next</button>
+
+@endif
 </section>
 </form>
 </div>

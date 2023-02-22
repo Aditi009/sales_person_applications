@@ -10,6 +10,18 @@ span{
     line-height: normal;
 
 }
+.container-card{
+    position: relative;
+    height: 500px;
+}
+.container-card .card{
+    position: absolute;
+    padding: 25px;
+    top: 50%;
+    left: 50%;
+    border: 1px solid blue;
+    transform: translate(-50%, -50%);
+}
 .percen{
     display: flex;
 }
