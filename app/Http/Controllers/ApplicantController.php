@@ -152,6 +152,18 @@ public function slide2(){
     $images = [
         asset('assets/images/1.png'),
         asset('assets/images/2.png'),
+        asset('assets/images/3.png'),
+        asset('assets/images/4.png'),
+        asset('assets/images/5.png'),
+        asset('assets/images/6.png'),
+        asset('assets/images/7.png'),
+        asset('assets/images/8.png'),
+        asset('assets/images/9.png'),
+        asset('assets/images/10.png'),
+        asset('assets/images/11.png'),
+        asset('assets/images/12.png'),
+        asset('assets/images/13.png'),
+
     ];
     
     return view('slide2',compact('images'));

@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <link href="{{ asset('assets/style.css') }}" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -22,16 +23,6 @@
             width: 100%;
             align-items: center;
             justify-content: center;
-        }
-
-        .mysection button {
-            height: 40px;
-            background-color: blue;
-            border: none;
-            color: white;
-            font: 22px;
-            cursor: pointer;
-            width: 100px
         }
 
         input:focus {
