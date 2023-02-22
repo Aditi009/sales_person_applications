@@ -148,6 +148,12 @@ public function getEmailListData(Request $request){
 }
 
 public function slide2(){
-    return view('slide2');
+
+    $images = [
+        asset('assets/images/1.png'),
+        asset('assets/images/2.png'),
+    ];
+    
+    return view('slide2',compact('images'));
 }
 }

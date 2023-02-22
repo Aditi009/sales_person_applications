@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+
     <title>Document</title>
     <style>
         body {
@@ -43,14 +45,44 @@
     <div id="formviewer">
         <div></div>
         <div id="overlay"></div>
-        <form action="{{ route('store-applicant') }}" id='store-phone' method="POST">
-            @csrf
-            <div id="contentContainer" style="justify-content: center;
+
+
+
+        <div id="contentContainer" style="justify-content: center;
             display: flex;">
-                <img src="{{asset('assets/images/Screenshot from 2023-02-22 18-37-00 (1).png')}}">
-            </div>
-        </form>
+            <img src="{{ $images[0] }}" alt="Image 1">
+
+        </div>
+        <section class="mysection">
+            {{-- <button id="prev-btn">Previous</button> --}}
+            <button id="next-btn">Next</button>
+        </section>
+
     </div>
 </body>
+<script>
+    $(document).ready(function() {
+        var images = {!! json_encode($images) !!};
+        var currentImage = 0;
+        var totalImages = images.length;
+
+        $('#prev-btn').click(function() {
+            currentImage--;
+            if (currentImage < 0) {
+                currentImage = totalImages - 1;
+            }
+            $('#contentContainer img').attr('src', images[currentImage]);
+        });
+
+        $('#next-btn').click(function() {
+            currentImage++;
+            if (currentImage >= totalImages) {
+                currentImage = 0;
+            }
+            $('#contentContainer img').attr('src', images[currentImage]);
+        });
+    });
+</script>
+
 
 </html>

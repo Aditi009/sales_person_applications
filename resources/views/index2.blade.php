@@ -179,13 +179,17 @@ body{padding:0px; margin:0px; background-color:#191f2f;}
     justify-content:center;
 }
 .mysection button{
-    height:40px;
-    background-color:blue;
-    border:none;
-    color:white;
-    font:22px;
-    cursor:pointer;
-    width:100px
+    height: 40px;
+    background-color: #5bc6fe;
+    border: none;
+    color: white;
+    text-transform: uppercase;
+    font-size: 16px;
+    font: 22px;
+    cursor: pointer;
+    font-weight: bold;
+    width: 100px;
+
 }
 
 input:focus {
@@ -735,7 +739,7 @@ function checkOver(i) {
 </div>
 <section class="mysection">
 @if($data != '')
-<a href="{{route('slide2')}}">Next</a>
+<button type="button"  onclick="location.href = '{{route('slide2')}}';"  >Next</button>
 @else
 <button type="button" class="ajax">Submit</button>
 
