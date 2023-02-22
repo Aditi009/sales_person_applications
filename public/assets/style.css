@@ -122,3 +122,13 @@ padding: 15px;
 .p-5{
     padding: 5px;
 }
+
+.mysection a {
+    height: 40px;
+    background-color: blue;
+    border: none;
+    color: white;
+    font: 22px;
+    cursor: pointer;
+    width: 100px;
+}

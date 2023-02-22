@@ -734,10 +734,10 @@ function checkOver(i) {
 </div>
 </div>
 <section class="mysection">
-@if($data)
-<button type="button" class="ajax">Submit</button>
+@if($data != '')
+<a href="{{route('slide2')}}">Next</a>
 @else
-<button type="button" class="ajax">Next</button>
+<button type="button" class="ajax">Submit</button>
 
 @endif
 </section>

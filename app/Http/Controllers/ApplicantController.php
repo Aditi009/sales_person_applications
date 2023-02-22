@@ -146,4 +146,8 @@ public function getEmailListData(Request $request){
             return response()->json(["status"=>false,'data'=>[]]);
         }
 }
+
+public function slide2(){
+    return view('slide2');
+}
 }
