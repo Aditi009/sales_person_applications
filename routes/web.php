@@ -21,3 +21,4 @@ Route::post('store-applicant',[ApplicantController::class,'store'])->name('store
 Route::get('/fetch-app1',[ApplicantController::class,'getAppData'])->name('fetch-app1');
 Route::get('/fetch-emaillist',[ApplicantController::class,'getEmailListData'])->name('fetch-emaillist');
 Route::get('/slide2',[ApplicantController::class,'slide2'])->name('slide2');
+Route::get('/thank-you',[ApplicantController::class,'thankYou'])->name('thank-you');

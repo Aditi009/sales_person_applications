@@ -164,8 +164,13 @@ public function slide2(){
         asset('assets/images/12.png'),
         asset('assets/images/13.png'),
 
+
     ];
     
     return view('slide2',compact('images'));
+}
+public function thankYou(){
+    return view('thank-you');
+
 }
 }

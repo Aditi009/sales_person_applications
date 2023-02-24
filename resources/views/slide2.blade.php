@@ -68,8 +68,8 @@
         $('#next-btn').click(function() {
             currentImage++;
             if (currentImage >= totalImages) {
-                currentImage = 0;
-            }
+                window.location = "{{ route('thank-you') }}"
+                                    }
             $('#contentContainer img').attr('src', images[currentImage]);
         });
     });
