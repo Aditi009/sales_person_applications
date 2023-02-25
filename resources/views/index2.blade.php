@@ -817,26 +817,26 @@ function checkOver(i) {
                 $('#application_id1').prop('disabled', true);
 
             }else{
-                $('#name1').val('');
+                // $('#name1').val('');
                 $('#name1').prop('disabled', false);
-                $('#title1').val('');
+                // $('#title1').val('');
                 $('#title1').prop('disabled', false);
-                $('#dob1').val('');
+                // $('#dob1').val('');
                 $('#dob1').prop('disabled', false);
-                $('#gender1').val('');
+                // $('#gender1').val('');
                 $('#gender1').prop('disabled', false);
-                $('#address1').val('');
+                // $('#address1').val('');
                 $('#address1').prop('disabled', false);
-                $('#post1').val('');
+                // $('#post1').val('');
                 $('#post1').prop('disabled', false);
-                $('#phone_no1').val('');
+                // $('#phone_no1').val('');
                 $('#phone_no1').prop('disabled', false);
-                $('#mobile_no1').val('');
+                // $('#mobile_no1').val('');
                 $('#mobile_no1').prop('disabled', false);
-                $('#customer_id1').val('');
+                // $('#customer_id1').val('');
                 $('#customer_id1').prop('disabled', false);
                // $('#email2').val(response.data.email)
-                $('#application_id1').val('');
+                // $('#application_id1').val('');
                 $('#application_id1').prop('disabled', false);
             }
         }
@@ -906,26 +906,26 @@ function checkOver(i) {
                 $('#application2').val(response.data.application_id);
                 $('#application2').prop('disabled', true);
             }else{
-                $('#name2').val('');
+                // $('#name2').val('');
                 $('#name2').prop('disabled', false);
-                $('#title2').val('');
+                // $('#title2').val('');
                 $('#title2').prop('disabled', false);
-                $('#dob2').val('');
+                // $('#dob2').val('');
                 $('#dob2').prop('disabled', false);
-                $('#gender2').val('');
+                // $('#gender2').val('');
                 $('#gender2').prop('disabled', false);
-                $('#address2').val('');
+                // $('#address2').val('');
                 $('#address2').prop('disabled', false);
-                $('#post2').val('');
+                // $('#post2').val('');
                 $('#post2').prop('disabled', false);
-                $('#phone_no2').val('');
+                // $('#phone_no2').val('');
                 $('#phone_no2').prop('disabled', false);
-                $('#mobile_no2').val('');
+                // $('#mobile_no2').val('');
                 $('#mobile_no2').prop('disabled', false);
-                $('#customer_id2').val('');
+                // $('#customer_id2').val('');
                 $('#customer_id2').prop('disabled', false);
                // $('#email2').val(response.data.email)
-                $('#application2').val('');
+                // $('#application2').val('');
                 $('#application2').prop('disabled', false);
             }
         }
