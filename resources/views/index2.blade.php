@@ -708,7 +708,10 @@ function checkOver(i) {
 <input id="customer_id1" name="customer_id1" type="text" tabindex="51" value="{{$data?$data->customer_id:''}}" data-objref="54 0 R" data-field-name="Text51"/>
 <input id="phone_no1" name="phone_no1" type="text" tabindex="52" value="{{$data?$data->phone_no:''}}" data-objref="55 0 R" data-field-name="Text52"/>
 <input id="mobile_no1" name="mobile_no1" type="text" tabindex="53" value="{{$data?$data->mobile_no:''}}" data-objref="56 0 R" data-field-name="Text53"/>
-<input id="email1" name="email1" type="text" tabindex="54" value="{{$email?$email:$data->email}}" data-objref="57 0 R" data-field-name="Text54"/>
+<input id="email1" list="email" name="email1" type="text" tabindex="54" value="{{$email?$email:$data->email}}" data-objref="57 0 R" data-field-name="Text54"/>
+<datalist id="email">
+</datalist>
+
  
 <input id="application_id1" name="application_id1" type="text" tabindex="55" value="wxswqdxwq" data-objref="58 0 R" data-field-name="Text55"/>
 <input id="form56_1" type="checkbox" tabindex="56" data-objref="59 0 R" data-field-name="Check Box56" value="Yes" imageName="formasset/1/form/59 0 R" images="110100"/>
@@ -724,7 +727,9 @@ function checkOver(i) {
 <input id="customer_id2" name="customer_id2" type="text" tabindex="66" value="" data-objref="69 0 R" data-field-name="Text66"/>
 <input id="phone_no2" name="phone_no2" type="text" tabindex="67" value="" data-objref="70 0 R" data-field-name="Text67"/>
 <input id="mobile_no2" name="mobile_no2" type="text" tabindex="68" value="" data-objref="71 0 R" data-field-name="Text68"/>
-<input id="email2"  name="email2" type="text" tabindex="69" value="" data-objref="72 0 R" data-field-name="Text69"/>
+<input id="email2" list="email3"  name="email2" type="text" tabindex="69" value="" data-objref="72 0 R" data-field-name="Text69"/>
+<datalist id="email3">
+</datalist>
 <input id="application2" name="application2" type="text" tabindex="70" value="" data-objref="73 0 R" data-field-name="Text70"/>
 
 <!-- End Form Data -->
@@ -738,12 +743,10 @@ function checkOver(i) {
 </div>
 </div>
 <section class="mysection">
-@if($data != '')
-<button type="button"  onclick="location.href = '{{route('slide2')}}';"  >Next</button>
-@else
-<button type="button" class="ajax">Submit</button>
 
-@endif
+<button type="button" class="ajax">Submit</button>
+<button type="button" id="nxtbtn"  onclick="location.href = '{{route('slide2')}}';"  >Next</button>
+
 </section>
 </form>
 </div>
@@ -754,7 +757,7 @@ function checkOver(i) {
 
 <script>
         var fetchApplicat = "{{route('fetch-app1')}}";
-        var fetchApplicat = "{{route('fetch-emaillist')}}";
+        var fetchApplicatlist = "{{route('fetch-emaillist')}}";
    
         $(document).ready(function() {
 			toastr.options = {
@@ -785,16 +788,56 @@ function checkOver(i) {
         success: function(response){
             if(response.status){
                 $('#name1').val(response.data.name)
+                $('#name1').prop('disabled', true);
                 $('#title1').val(response.data.title)
+                $('#title1').prop('disabled', true);
                 $('#dob1').val(response.data.dob)
+                $('#dob1').prop('disabled', true);
+
                 $('#gender1').val(response.data.gender)
+                $('#gender1').prop('disabled', true);
+
                 $('#address1').val(response.data.address)
+                $('#address1').prop('disabled', true);
+
                 $('#post1').val(response.data.post_or_zip)
+                $('#post1').prop('disabled', true);
+
                 $('#phone_no1').val(response.data.phone_no)
+                $('#phone_no1').prop('disabled', true);
+
                 $('#mobile_no1').val(response.data.mobile_no)
+                $('#mobile_no1').prop('disabled', true);
+
                 $('#customer_id1').val(response.data.customer_id)
+                $('#customer_id1').prop('disabled', true);
+
                 //$('#email1').val(response.data.email)
                 $('#application_id1').val(response.data.application_id)
+                $('#application_id1').prop('disabled', true);
+
+            }else{
+                $('#name1').val('');
+                $('#name1').prop('disabled', false);
+                $('#title1').val('');
+                $('#title1').prop('disabled', false);
+                $('#dob1').val('');
+                $('#dob1').prop('disabled', false);
+                $('#gender1').val('');
+                $('#gender1').prop('disabled', false);
+                $('#address1').val('');
+                $('#address1').prop('disabled', false);
+                $('#post1').val('');
+                $('#post1').prop('disabled', false);
+                $('#phone_no1').val('');
+                $('#phone_no1').prop('disabled', false);
+                $('#mobile_no1').val('');
+                $('#mobile_no1').prop('disabled', false);
+                $('#customer_id1').val('');
+                $('#customer_id1').prop('disabled', false);
+               // $('#email2').val(response.data.email)
+                $('#application_id1').val('');
+                $('#application_id1').prop('disabled', false);
             }
         }
         }) });
@@ -810,16 +853,16 @@ function checkOver(i) {
         
         success: function(response){
             if(response.status){
-                $('#name1').val(response.data.name)
-                $('#title1').val(response.data.title)
-                $('#dob1').val(response.data.dob)
-                $('#gender1').val(response.data.gender)
-                $('#address1').val(response.data.address)
-                $('#post1').val(response.data.post_or_zip)
-                $('#phone_no1').val(response.data.phone_no)
-                $('#mobile_no1').val(response.data.mobile_no)
-                $('#customer_id1').val(response.data.customer_id)
-                $('#application_id1').val(response.data.application_id)
+                // $('#name1').val(response.data.name)
+                // $('#title1').val(response.data.title)
+                // $('#dob1').val(response.data.dob)
+                // $('#gender1').val(response.data.gender)
+                // $('#address1').val(response.data.address)
+                // $('#post1').val(response.data.post_or_zip)
+                // $('#phone_no1').val(response.data.phone_no)
+                // $('#mobile_no1').val(response.data.mobile_no)
+                // $('#customer_id1').val(response.data.customer_id)
+                // $('#application_id1').val(response.data.application_id)
                 //$('#email1').val(response.data.email)
 
             }
@@ -841,17 +884,49 @@ function checkOver(i) {
         
         success: function(response){
             if(response.status){
-                $('#name2').val(response.data.name)
-                $('#title2').val(response.data.title)
-                $('#dob2').val(response.data.dob)
-                $('#gender2').val(response.data.gender)
-                $('#address2').val(response.data.address)
-                $('#post2').val(response.data.post_or_zip)
-                $('#phone_no2').val(response.data.phone_no)
-                $('#mobile_no2').val(response.data.mobile_no)
-                $('#customer_id2').val(response.data.customer_id)
-                $('#email2').val(response.data.email)
-                $('#application2').val(response.data.application_id)
+                $('#name2').val(response.data.name);
+                $('#name2').prop('disabled', true);
+                $('#title2').val(response.data.title);
+                $('#title2').prop('disabled', true);
+                $('#dob2').val(response.data.dob);
+                $('#dob2').prop('disabled', true);
+                $('#gender2').val(response.data.gender);
+                $('#gender2').prop('disabled', true);
+                $('#address2').val(response.data.address);
+                $('#address2').prop('disabled', true);
+                $('#post2').val(response.data.post_or_zip);
+                $('#post2').prop('disabled', true);
+                $('#phone_no2').val(response.data.phone_no);
+                $('#phone_no2').prop('disabled', true);
+                $('#mobile_no2').val(response.data.mobile_no);
+                $('#mobile_no2').prop('disabled', true);
+                $('#customer_id2').val(response.data.customer_id);
+                $('#customer_id2').prop('disabled', true);
+               // $('#email2').val(response.data.email)
+                $('#application2').val(response.data.application_id);
+                $('#application2').prop('disabled', true);
+            }else{
+                $('#name2').val('');
+                $('#name2').prop('disabled', false);
+                $('#title2').val('');
+                $('#title2').prop('disabled', false);
+                $('#dob2').val('');
+                $('#dob2').prop('disabled', false);
+                $('#gender2').val('');
+                $('#gender2').prop('disabled', false);
+                $('#address2').val('');
+                $('#address2').prop('disabled', false);
+                $('#post2').val('');
+                $('#post2').prop('disabled', false);
+                $('#phone_no2').val('');
+                $('#phone_no2').prop('disabled', false);
+                $('#mobile_no2').val('');
+                $('#mobile_no2').prop('disabled', false);
+                $('#customer_id2').val('');
+                $('#customer_id2').prop('disabled', false);
+               // $('#email2').val(response.data.email)
+                $('#application2').val('');
+                $('#application2').prop('disabled', false);
             }
         }
         }) });
@@ -866,29 +941,34 @@ function checkOver(i) {
         
         success: function(response){
             if(response.status){
-                $('#name2').val(response.data.name)
-                $('#title2').val(response.data.title)
-                $('#dob2').val(response.data.dob)
-                $('#gender2').val(response.data.gender)
-                $('#address2').val(response.data.address)
-                $('#post2').val(response.data.post_or_zip)
-                $('#phone_no2').val(response.data.phone_no)
-                $('#mobile_no2').val(response.data.mobile_no)
-                $('#customer_id2').val(response.data.customer_id)
-                $('#email2').val(response.data.email)
-                $('#application2').val(response.data.application_id)
+                // $('#name2').val(response.data.name)
+                // $('#title2').val(response.data.title)
+                // $('#dob2').val(response.data.dob)
+                // $('#gender2').val(response.data.gender)
+                // $('#address2').val(response.data.address)
+                // $('#post2').val(response.data.post_or_zip)
+                // $('#phone_no2').val(response.data.phone_no)
+                // $('#mobile_no2').val(response.data.mobile_no)
+                // $('#customer_id2').val(response.data.customer_id)
+                // $('#email2').val(response.data.email)
+                // $('#application2').val(response.data.application_id)
             }
         }
         }) });
 
         $("#email1").on("input", function() {
             var email = $(this).val();
-            checkEmailSuggetion('#firstemail',email);
+            checkEmailSuggetion('#email',email);
+        });
+
+        $("#email2").on("input", function() {
+            var email = $(this).val();
+            checkEmailSuggetion('#email3',email);
         });
 
         function checkEmailSuggetion(id,s_word){
             $.ajax({
-        url: fetchApplicat,
+        url: fetchApplicatlist,
         type: "GET",
         data: {'email':s_word},
         dataType:'JSON',
@@ -899,14 +979,15 @@ function checkOver(i) {
                 if(response.data.length > 0){
                     console.log("Data available");
                     var emails = [];
+                    var $html = '';
+                    $('#email').html($html);
                     response.data.forEach((element)=>{
                         emails.push(element.email);
+                        $html = $html + '<option value="' + element.email + '"/>';
                     });
-
+                    $(id).html($html);
                     console.log(emails);
-                    $("#email1").autocomplete({
-  source: emails
-});
+                    
                 }
 
             }

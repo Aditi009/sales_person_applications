@@ -32,9 +32,13 @@ var showValidationErrors = (array, title) => {
   }
 
 };
+
+
 var insertAfter = (el, referenceNode) => {
   referenceNode.parentNode.insertBefore(el, referenceNode.nextSibling);
 };
+
+
 document.addEventListener("click", function (e) {
   if (e.target.classList.contains("ajax")) {
     var button = e.target.innerHTML;
@@ -77,6 +81,7 @@ document.addEventListener("click", function (e) {
         } else if (data.response == "success") {
           // e.target.disabled = true;
           alert("Saved Successfully");
+          $('#nxtbtn').click();
         } else if (data.response == "failure") {
          
           toastr.error(data.message);
@@ -512,11 +517,11 @@ document.addEventListener("change", (e) => {
     var selectedDateTimestamp = selectedDate.getTime();
     var yesterdayTimestamp = yesterday.getTime();
 
-    if (selectedDateTimestamp >= yesterdayTimestamp) {
+    if (selectedDateTimestamp <= yesterdayTimestamp) {
       e.target.value = e.target.value;
     } else {
       e.target.value = "";
-      toastr.error("Past dates are disabled. Please select future date.");
+      toastr.error("Future dates are disabled. Please select past date.");
     }
   }
 });

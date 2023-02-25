@@ -95,8 +95,11 @@ class ApplicantController extends Controller
             $app1->post_or_zip = $request->post1;
             $app1->customer_id = $request->customer_id1;
             $app1->gender = $request->gender1;
-
+            $email1exist=Applicant::where('email',$request->email1)->orWhere('mobile_no',$request->mobile_no1)->first();
+            if(!$email1exist)
+            {
             $app1->save();
+            }
 
             $app1 = new Applicant();
             $app1->applicant_type = 2;
@@ -112,7 +115,11 @@ class ApplicantController extends Controller
             $app1->mobile_no = $request->mobile_no2;
             $app1->email = $request->email2;
             $app1->application_id = $request->application_id2;
+            $email2exist=Applicant::where('email',$request->email2)->orWhere('mobile_no',$request->mobile_no2)->first();
+            if(!$email2exist)
+            {
             $app1->save();
+            }
             $data['redirect_url']   = route('index');
             $data['response']       = 'success';
             $data['message']        =  "Applicant Added Successfully";
@@ -130,7 +137,7 @@ public function getAppData(Request $request){
     if($data){
         return response()->json(['status'=>true,'data'=>$data]);
     }else{
-        return response()->json([]);
+        return response()->json(['status'=>false,'data'=>null]);
     }
 }
 

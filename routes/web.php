@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[ApplicantController::class,'index'])->name('index');
 Route::get('/form',[ApplicantController::class,'index2'])->name('index2');
-Route::post('/find-email',[ApplicantController::class,'getPage'])->name('find-email');
+Route::any('/find-email',[ApplicantController::class,'getPage'])->name('find-email');
 Route::post('store-applicant',[ApplicantController::class,'store'])->name('store-applicant');
 Route::get('/fetch-app1',[ApplicantController::class,'getAppData'])->name('fetch-app1');
 Route::get('/fetch-emaillist',[ApplicantController::class,'getEmailListData'])->name('fetch-emaillist');
