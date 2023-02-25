@@ -22,7 +22,7 @@
         <div class="card text-center" style="width:500px">
 
             <div class="card-body">
-                <form action="{{route('find-email')}}" method="post">
+                <form action="{{route('find-email')}}" method="get">
                     @csrf
                 <div class="form-group">
                     <label>Enter Your Email</label>

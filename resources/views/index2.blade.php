@@ -707,7 +707,10 @@ function checkOver(i) {
 <input id="post1" name="post1" type="text" tabindex="50" value="{{$data?$data->post_or_zip:''}}" data-objref="53 0 R" data-field-name="Text50"/>
 <input id="customer_id1" name="customer_id1" type="text" tabindex="51" value="{{$data?$data->customer_id:''}}" data-objref="54 0 R" data-field-name="Text51"/>
 <input id="phone_no1" name="phone_no1" type="text" tabindex="52" value="{{$data?$data->phone_no:''}}" data-objref="55 0 R" data-field-name="Text52"/>
-<input id="mobile_no1" name="mobile_no1" type="text" tabindex="53" value="{{$data?$data->mobile_no:''}}" data-objref="56 0 R" data-field-name="Text53"/>
+<input id="mobile_no1" list="phonedata1" name="mobile_no1" type="text" tabindex="53" value="{{$data?$data->mobile_no:''}}" data-objref="56 0 R" data-field-name="Text53"/>
+<datalist id="phonedata1">
+
+</datalist>
 <input id="email1" list="email" name="email1" type="text" tabindex="54" value="{{$email?$email:$data->email}}" data-objref="57 0 R" data-field-name="Text54"/>
 <datalist id="email">
 </datalist>
@@ -726,7 +729,10 @@ function checkOver(i) {
 <input id="post2" name="post2" type="text" tabindex="65" value="" data-objref="68 0 R" data-field-name="Text65"/>
 <input id="customer_id2" name="customer_id2" type="text" tabindex="66" value="" data-objref="69 0 R" data-field-name="Text66"/>
 <input id="phone_no2" name="phone_no2" type="text" tabindex="67" value="" data-objref="70 0 R" data-field-name="Text67"/>
-<input id="mobile_no2" name="mobile_no2" type="text" tabindex="68" value="" data-objref="71 0 R" data-field-name="Text68"/>
+<input id="mobile_no2" list="phonedata2" name="mobile_no2" type="text" tabindex="68" value="" data-objref="71 0 R" data-field-name="Text68"/>
+<datalist id="phonedata2">
+
+</datalist>
 <input id="email2" list="email3"  name="email2" type="text" tabindex="69" value="" data-objref="72 0 R" data-field-name="Text69"/>
 <datalist id="email3">
 </datalist>
@@ -744,8 +750,8 @@ function checkOver(i) {
 </div>
 <section class="mysection">
 
-<button type="button" class="ajax">Submit</button>
-<button type="button" id="nxtbtn"  onclick="location.href = '{{route('slide2')}}';"  >Next</button>
+<button type="button" class="ajax">Next</button>
+<button type="button" id="nxtbtn"  onclick="location.href = '{{route('slide2')}}';"  hidden>Next</button>
 
 </section>
 </form>
@@ -853,17 +859,17 @@ function checkOver(i) {
         
         success: function(response){
             if(response.status){
-                // $('#name1').val(response.data.name)
-                // $('#title1').val(response.data.title)
-                // $('#dob1').val(response.data.dob)
-                // $('#gender1').val(response.data.gender)
-                // $('#address1').val(response.data.address)
-                // $('#post1').val(response.data.post_or_zip)
-                // $('#phone_no1').val(response.data.phone_no)
-                // $('#mobile_no1').val(response.data.mobile_no)
-                // $('#customer_id1').val(response.data.customer_id)
-                // $('#application_id1').val(response.data.application_id)
-                //$('#email1').val(response.data.email)
+                $('#name1').val(response.data.name)
+                $('#title1').val(response.data.title)
+                $('#dob1').val(response.data.dob)
+                $('#gender1').val(response.data.gender)
+                $('#address1').val(response.data.address)
+                $('#post1').val(response.data.post_or_zip)
+                $('#phone_no1').val(response.data.phone_no)
+                //$('#mobile_no1').val(response.data.mobile_no)
+                $('#customer_id1').val(response.data.customer_id)
+                $('#application_id1').val(response.data.application_id)
+                $('#email1').val(response.data.email)
 
             }
         }
@@ -941,17 +947,17 @@ function checkOver(i) {
         
         success: function(response){
             if(response.status){
-                // $('#name2').val(response.data.name)
-                // $('#title2').val(response.data.title)
-                // $('#dob2').val(response.data.dob)
-                // $('#gender2').val(response.data.gender)
-                // $('#address2').val(response.data.address)
-                // $('#post2').val(response.data.post_or_zip)
-                // $('#phone_no2').val(response.data.phone_no)
-                // $('#mobile_no2').val(response.data.mobile_no)
-                // $('#customer_id2').val(response.data.customer_id)
-                // $('#email2').val(response.data.email)
-                // $('#application2').val(response.data.application_id)
+                $('#name2').val(response.data.name)
+                $('#title2').val(response.data.title)
+                $('#dob2').val(response.data.dob)
+                $('#gender2').val(response.data.gender)
+                $('#address2').val(response.data.address)
+                $('#post2').val(response.data.post_or_zip)
+                $('#phone_no2').val(response.data.phone_no)
+                //$('#mobile_no2').val(response.data.mobile_no)
+                $('#customer_id2').val(response.data.customer_id)
+                $('#email2').val(response.data.email)
+                $('#application2').val(response.data.application_id)
             }
         }
         }) });
@@ -959,6 +965,16 @@ function checkOver(i) {
         $("#email1").on("input", function() {
             var email = $(this).val();
             checkEmailSuggetion('#email',email);
+        });
+
+        $("#mobile_no1").on("input", function() {
+            var email = $(this).val();
+            checkPhoneSuggetion('#phonedata1',email);
+        });
+
+        $("#mobile_no2").on("input", function() {
+            var email = $(this).val();
+            checkPhoneSuggetion('#phonedata2',email);
         });
 
         $("#email2").on("input", function() {
@@ -984,6 +1000,36 @@ function checkOver(i) {
                     response.data.forEach((element)=>{
                         emails.push(element.email);
                         $html = $html + '<option value="' + element.email + '"/>';
+                    });
+                    $(id).html($html);
+                    console.log(emails);
+                    
+                }
+
+            }
+        }
+        });
+        }
+
+
+        function checkPhoneSuggetion(id,s_word){
+            $.ajax({
+        url: fetchApplicatlist,
+        type: "GET",
+        data: {'mobile':s_word},
+        dataType:'JSON',
+        
+        success: function(response){
+            if(response.status){
+                //$('#name2').val(response.data)
+                if(response.data.length > 0){
+                    console.log("Data available");
+                    var emails = [];
+                    var $html = '';
+                    $(id).html($html);
+                    response.data.forEach((element)=>{
+                        emails.push(element.email);
+                        $html = $html + '<option value="' + element.mobile_no + '"/>';
                     });
                     $(id).html($html);
                     console.log(emails);

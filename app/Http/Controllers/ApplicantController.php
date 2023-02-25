@@ -154,6 +154,19 @@ public function getEmailListData(Request $request){
         }
 }
 
+public function getMobileListData(Request $request){
+    if($request->email){
+        $data = Applicant::select('email')->where('name', 'like', '%' . $request->email . '%')->get();
+        }elseif($request->mobile){
+        $data = Applicant::where('mobile_no', 'like', '%' . $request->mobile . '%')->get();
+        }
+        if($data){
+            return response()->json(['status'=>true,'data'=>$data]);
+        }else{
+            return response()->json(["status"=>false,'data'=>[]]);
+        }
+}
+
 public function slide2(){
 
     $images = [
