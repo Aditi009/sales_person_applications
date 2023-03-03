@@ -19,7 +19,7 @@ span{
     padding: 25px;
     top: 50%;
     left: 50%;
-    border: 1px solid blue;
+    border: 1px solid #2dcddf;
     transform: translate(-50%, -50%);
 }
 .percen{

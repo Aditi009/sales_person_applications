@@ -41,7 +41,7 @@
 
         <div id="contentContainer" style="justify-content: center;
             display: flex;    margin-top: 10%;">
-            <img src="{{asset('assets/images/end.png')}}" alt="Image 1">
+            <img src="{{asset('assets/images/end.jpeg')}}" alt="Image 1">
 
         </div>
 

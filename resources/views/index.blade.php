@@ -26,15 +26,54 @@
                     @csrf
                 <div class="form-group">
                     <label>Enter Your Email</label>
-                    <input type="text" class="form-control" name="email" placeholder="email@gmail.com">
+                    <input type="text" class="form-control" name="email" id="email" placeholder="email@gmail.com">
+                    <datalist id="email34">
+                    </datalist>
                 </div>
-                <button type="submit" class="btn" style="background: blue;
-                color: white;">Next</button>
+                <button type="submit" class="btn" style="color: white;
+                height: 45px;
+                background: #2DCDDF;
+                font-size: 18px;
+                width: 100px;">Next</button>
                 </form>
             </div>
 
         </div>
     </div>
 </body>
+<script>
+            var fetchApplicatlist = "{{route('fetch-emaillist')}}";
+      $("#email").on("input", function() {
+            var email = $(this).val();
+            checkEmailSuggetion('#email34',email);
+      });
+     function checkEmailSuggetion(id,s_word){
+     $.ajax({
+        url: fetchApplicatlist,
+        type: "GET",
+        data: {'email':s_word},
+        dataType:'JSON',
+        
+        success: function(response){
+            if(response.status){
+                //$('#name2').val(response.data)
+                if(response.data.length > 0){
+                    console.log("Data available");
+                    var emails = [];
+                    var $html = '';
+                    $('#email').html($html);
+                    response.data.forEach((element)=>{
+                        emails.push(element.email);
+                        $html = $html + '<option value="' + element.email + '"/>';
+                    });
+                    $(id).html($html);
+                    console.log(emails);
+                    
+                }
+        }
+    }
+    });
+}
+</script>
 
 </html>
