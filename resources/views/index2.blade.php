@@ -700,7 +700,7 @@ function checkOver(i) {
 <input id="form43_1" type="text" tabindex="43" value="" data-objref="46 0 R" data-field-name="Text43"/>
 <input id="title1" name="title1" type="text" tabindex="44"  value="{{$data?$data->title:''}}"  data-objref="47 0 R" data-field-name="Text44"/>
 <input id="name1" name="name1" type="text" tabindex="45"  value="{{$data?$data->name:''}}" data-objref="48 0 R" data-field-name="Text45"/>
-<input id="dob1" name="dob1" type="date"  value="{{$data?date('d/m/Y', strtotime($data->dob)):''}}"  tabindex="46"  data-objref="49 0 R" data-field-name="Text46"/>
+<input id="dob1" name="dob1" type="date"  value="12/08/2021"  tabindex="46"  data-objref="49 0 R" data-field-name="Text46"/>
 <input id="gender1" name="gender1"  type="text" tabindex="47" value="{{$data?$data->gender:''}}" data-objref="50 0 R" data-field-name="Text47"/>
 <input id="address1" name="address1" type="text" tabindex="48" value="{{$data?$data->address:''}}" data-objref="51 0 R" data-field-name="Text48"/>
 <input id="form49_1" type="text" tabindex="49" value="" data-objref="52 0 R" data-field-name="Text49"/>

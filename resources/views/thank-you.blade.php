@@ -32,22 +32,19 @@
 </head>
 
 <body>
-
     <div id="formviewer">
         <div></div>
         <div id="overlay"></div>
-
-
-
         <div id="contentContainer" style="justify-content: center;
             display: flex;    margin-top: 10%;">
-            <img src="{{asset('assets/images/end.jpeg')}}" alt="Image 1">
-
+            <img src="{{ asset('assets/images/end.jpeg') }}" alt="Image 1">
         </div>
-
-
     </div>
+    <script>
+        setTimeout(function(){
+               window.location.href = "{{url('/')}}" 
+            },5000)
+    </script>
 </body>
-
 
 </html>

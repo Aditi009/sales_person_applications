@@ -143,7 +143,7 @@ public function getAppData(Request $request){
 
 public function getEmailListData(Request $request){
     if($request->email){
-        $data = Applicant::select('email')->where('name', 'like', '%' . $request->email . '%')->get();
+        $data = Applicant::select('email')->where('email', 'like', '%' . $request->email . '%')->get();
         }elseif($request->mobile){
         $data = Applicant::where('mobile_no', 'like', '%' . $request->mobile . '%')->get();
         }

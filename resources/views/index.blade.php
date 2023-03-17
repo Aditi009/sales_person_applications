@@ -26,7 +26,7 @@
                     @csrf
                 <div class="form-group">
                     <label>Enter Your Email</label>
-                    <input type="text" class="form-control" name="email" id="email" placeholder="email@gmail.com">
+                    <input list="email34" type="text" class="form-control" name="email" id="email" placeholder="email@gmail.com">
                     <datalist id="email34">
                     </datalist>
                 </div>
@@ -42,7 +42,9 @@
     </div>
 </body>
 <script>
-            var fetchApplicatlist = "{{route('fetch-emaillist')}}";
+    $('input:checked').removeAttr('checked');
+
+    var fetchApplicatlist = "{{route('fetch-emaillist')}}";
       $("#email").on("input", function() {
             var email = $(this).val();
             checkEmailSuggetion('#email34',email);
@@ -61,14 +63,13 @@
                     console.log("Data available");
                     var emails = [];
                     var $html = '';
-                    $('#email').html($html);
+                    $('#email34').html($html);
                     response.data.forEach((element)=>{
                         emails.push(element.email);
                         $html = $html + '<option value="' + element.email + '"/>';
                     });
-                    $(id).html($html);
-                    console.log(emails);
-                    
+                    $('#email34').html($html);
+                    console.log(emails,"hjj");
                 }
         }
     }
