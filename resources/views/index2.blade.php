@@ -667,10 +667,10 @@ function checkOver(i) {
 <input id="form10_1" type="text" tabindex="10" value="" data-objref="13 0 R" data-field-name="Text10"/>
 <input id="form11_1" type="text" tabindex="11" value="" data-objref="14 0 R" data-field-name="Text11"/>
 <input id="form12_1" type="text" tabindex="12" value="" data-objref="15 0 R" data-field-name="Text12"/>
-<input id="form13_1" type="checkbox" tabindex="13" data-objref="16 0 R" data-field-name="Check Box13" value="Yes" imageName="formasset/1/form/16 0 R" images="110100"/>
-<input id="form14_1" type="checkbox" tabindex="14" data-objref="17 0 R" data-field-name="Check Box14" value="Yes" imageName="formasset/1/form/17 0 R" images="110100"/>
-<input id="form15_1" type="checkbox" tabindex="15" data-objref="18 0 R" data-field-name="Check Box15" value="Yes" imageName="formasset/1/form/18 0 R" images="110100"/>
-<input id="form16_1" type="checkbox" tabindex="16" data-objref="19 0 R" data-field-name="Check Box16" value="Yes" imageName="formasset/1/form/19 0 R" images="110100"/>
+<input id="form13_1" type="checkbox" tabindex="13" data-objref="16 0 R" data-field-name="Check Box13" name="type" value="new_account" imageName="formasset/1/form/16 0 R" images="110100"/>
+<input id="form14_1" type="checkbox" tabindex="14" data-objref="17 0 R" data-field-name="Check Box14" name="type"  value="exists_account" imageName="formasset/1/form/17 0 R" images="110100"/>
+<input id="form15_1" type="checkbox" tabindex="15" data-objref="18 0 R" data-field-name="Check Box15"  name="type"  value="topup" imageName="formasset/1/form/18 0 R" images="110100"/>
+<input id="form16_1" type="checkbox" tabindex="16" data-objref="19 0 R" data-field-name="Check Box16"  name="type"  value="partner" imageName="formasset/1/form/19 0 R" images="110100"/>
 <input id="form17_1" type="checkbox" tabindex="17" data-objref="20 0 R" data-field-name="Check Box17" value="Yes" imageName="formasset/1/form/20 0 R" images="110100"/>
 <input id="form18_1" type="checkbox" tabindex="18" data-objref="21 0 R" data-field-name="Check Box18" value="Yes" imageName="formasset/1/form/21 0 R" images="110100"/>
 <input id="form19_1" type="checkbox" tabindex="19" data-objref="22 0 R" data-field-name="Check Box19" value="Yes" imageName="formasset/1/form/22 0 R" images="110100"/>

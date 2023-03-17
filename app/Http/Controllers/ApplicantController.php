@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applicant;
+use App\Models\Application;
 use Validator; 
 
 use Illuminate\Http\Request;
@@ -120,6 +121,12 @@ class ApplicantController extends Controller
             {
             $app1->save();
             }
+
+            $application = new Application();
+            $application->type = $request->type;
+            $application->applicant_id =  $app1->id;
+            $application->save();
+            
             $data['redirect_url']   = route('index');
             $data['response']       = 'success';
             $data['message']        =  "Applicant Added Successfully";
