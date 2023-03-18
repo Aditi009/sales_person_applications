@@ -196,6 +196,10 @@ input:focus {
   outline: none;
 }
 
+#form11_1{
+    padding-left:10px !important;
+}
+
 </style>
 </head>
 <body style="margin: 0;" onload='idrform.init()'>
@@ -605,9 +609,9 @@ function checkOver(i) {
 <span id="th_1" class="t s3">Postion: </span>
 <span id="ti_1" class="t s3">Sale Agent </span>
 <span id="tj_1" class="t s3">Postion: </span>
-<span id="tk_1" class="t s5">Option A </span><span id="tl_1" class="t s5">New Account </span><span id="tm_1" class="t s5">Existing Account </span><span id="tn_1" class="t s5">Top Up </span><span id="to_1" class="t s5">Partner </span>
-<span id="tp_1" class="t s5">Option A </span><span id="tq_1" class="t s5">Broadcast </span><span id="tr_1" class="t s5">ScarcityCoin </span><span id="ts_1" class="t s5">StrykerCoin </span><span id="tt_1" class="t s5">OcitiGen </span>
-<span id="tu_1" class="t s5">Option A </span><span id="tv_1" class="t s5">Hubsite (Business) </span>
+<span id="tl_1" class="t s5">New Account </span><span id="tm_1" class="t s5">Existing Account </span><span id="tn_1" class="t s5">Top Up </span><span id="to_1" class="t s5">Partner </span>
+<span id="tq_1" class="t s5">Broadcast </span><span id="tr_1" class="t s5">ScarcityCoin </span><span id="ts_1" class="t s5">StrykerCoin </span><span id="tt_1" class="t s5">OcitiGen </span>
+<span id="tv_1" class="t s5">Hubsite (Business) </span>
 <span id="tw_1" class="t s5">$500 </span><span id="tx_1" class="t s5">$1,000 </span><span id="ty_1" class="t s5">$2,000 </span>
 <span id="tz_1" class="t s5">$500 </span><span id="t10_1" class="t s5">$1,000 </span><span id="t11_1" class="t s5">$2,000 </span>
 <span id="t12_1" class="t s5">$5,000 </span>
@@ -655,12 +659,12 @@ function checkOver(i) {
 
 
 <!-- Begin Form Data -->
-<input id="form1_1" type="text" tabindex="1" value="" data-objref="4 0 R" data-field-name="Text1"/>
-<input id="form2_1" type="checkbox" tabindex="2" value="" data-objref="5 0 R" data-field-name="Check Box2" imageName="formasset/1/form/5 0 R" images="110100" checked=""/>
-<input id="form3_1" type="checkbox" tabindex="3" value="" data-objref="6 0 R" data-field-name="Check Box3" imageName="formasset/1/form/6 0 R" images="110100"/>
-<input id="form4_1" type="checkbox" tabindex="4" data-objref="7 0 R" data-field-name="Check Box4" value="Yes" imageName="formasset/1/form/7 0 R" images="110100"/>
-<input id="form5_1" type="checkbox" tabindex="5" data-objref="8 0 R" data-field-name="Check Box5" value="Yes" imageName="formasset/1/form/8 0 R" images="110100"/>
-<input id="form6_1" type="checkbox" tabindex="6" data-objref="9 0 R" data-field-name="Check Box6" value="Yes" imageName="formasset/1/form/9 0 R" images="110100"/>
+<input id="form1_1" type="text" tabindex="1" value="<?php echo date('d/m/y',time()); ?>" data-objref="4 0 R" data-field-name="Text1" readonly/>
+<input id="form2_1" type="radio" name="location" tabindex="2" value="" data-objref="5 0 R" data-field-name="Check Box2" imageName="formasset/1/form/6 0 R" images="110100"/>
+<input id="form3_1" type="radio" name="location" tabindex="3" value="" data-objref="6 0 R" data-field-name="Check Box3" imageName="formasset/1/form/6 0 R" images="110100"/>
+<input id="form4_1" type="radio" name="location" tabindex="4" data-objref="7 0 R" data-field-name="Check Box4" value="Yes" imageName="formasset/1/form/7 0 R" images="110100"/>
+<input id="form5_1" type="radio" name="location" tabindex="5" data-objref="8 0 R" data-field-name="Check Box5" value="Yes" imageName="formasset/1/form/8 0 R" images="110100"/>
+<input id="form6_1" type="radio" name="location" tabindex="6" data-objref="9 0 R" data-field-name="Check Box6" value="Yes" imageName="formasset/1/form/9 0 R" images="110100"/>
 <input id="form7_1" type="text" tabindex="7" value="" data-objref="10 0 R" data-field-name="Text7"/>
 <input id="form8_1" type="text" tabindex="8" value="" data-objref="11 0 R" data-field-name="Text8"/>
 <input id="form9_1" type="text" tabindex="9" value="" data-objref="12 0 R" data-field-name="Text9"/>
@@ -692,12 +696,12 @@ function checkOver(i) {
 <input id="form34_1" type="text" tabindex="34" value="" data-objref="37 0 R" data-field-name="Text34"/>
 <input id="form35_1" type="text" tabindex="35" value="" data-objref="38 0 R" data-field-name="Text35"/>
 <input id="form36_1" type="checkbox" tabindex="36" data-objref="39 0 R" data-field-name="Check Box36" value="Yes" imageName="formasset/1/form/39 0 R" images="110100"/>
-<input id="form37_1" type="checkbox" tabindex="37" name="package_detail" value="500" data-objref="40 0 R" data-field-name="Check Box37" imageName="formasset/1/form/40 0 R" images="110100" checked="checked"/>
-<input id="form38_1" type="checkbox" tabindex="38"  name="package_detail" value="1000" data-objref="41 0 R" data-field-name="Check Box38" imageName="formasset/1/form/41 0 R" images="110100" checked="checked"/>
-<input id="form39_1" type="checkbox" tabindex="39"  name="package_detail"  value="2000" data-objref="42 0 R" data-field-name="Check Box39" imageName="formasset/1/form/42 0 R" images="110100" checked="checked"/>
+<input id="form37_1" type="checkbox" tabindex="37" name="package_detail" value="500" data-objref="16 0 R" data-field-name="Check Box37" imageName="formasset/1/form/16 0 R" images="110100" />
+<input id="form38_1" type="checkbox" tabindex="38"  name="package_detail" value="1000" data-objref="31 0 R" data-field-name="Check Box38" imageName="formasset/1/form/16 0 R" images="110100" />
+<input id="form39_1" type="checkbox" tabindex="39"  name="package_detail"  value="2000" data-objref="42 0 R" data-field-name="Check Box39" imageName="formasset/1/form/16 0 R" images="110100" />
 <input id="form40_1" type="text" tabindex="40" value="" data-objref="43 0 R" data-field-name="Text40"/>
-<input id="form41_1" type="checkbox" tabindex="41" data-objref="44 0 R" data-field-name="Check Box41" value="Yes" imageName="formasset/1/form/44 0 R" images="110100"/>
-<input id="form42_1" type="checkbox" tabindex="42" value="Yes" data-objref="45 0 R" data-field-name="Check Box42" imageName="formasset/1/form/45 0 R" images="110100" checked="checked"/>
+<input id="form41_1" type="checkbox" tabindex="41" data-objref="44 0 R" data-field-name="Check Box41" value="Yes" imageName="formasset/1/form/30 0 R" images="110100"/>
+<input id="form42_1" type="checkbox" tabindex="42" value="Yes" data-objref="45 0 R" data-field-name="Check Box42" imageName="formasset/1/form/45 0 R" images="110100" />
 <input id="form43_1" type="text" tabindex="43" value="" data-objref="46 0 R" data-field-name="Text43"/>
 <input id="title1" name="title1" type="text" tabindex="44"  value="{{$data?$data->title:''}}"  data-objref="47 0 R" data-field-name="Text44"/>
 <input id="name1" name="name1" type="text" tabindex="45"  value="{{$data?$data->name:''}}" data-objref="48 0 R" data-field-name="Text45"/>
@@ -714,7 +718,7 @@ function checkOver(i) {
 </datalist>
 
  
-<input id="application_id1" name="application_id1" type="text" tabindex="55" value="wxswqdxwq" data-objref="58 0 R" data-field-name="Text55"/>
+<input id="application_id1" name="application_id1" type="text" tabindex="55" value="<?php echo 'SA'.rand(00000,999999) ?>" data-objref="58 0 R" data-field-name="Text55" />
 <input id="form56_1" type="checkbox" tabindex="56" data-objref="59 0 R" data-field-name="Check Box56" value="Yes" imageName="formasset/1/form/59 0 R" images="110100"/>
 <input id="form57_1" type="checkbox" tabindex="57" data-objref="60 0 R" data-field-name="Check Box57" value="Yes" imageName="formasset/1/form/60 0 R" images="110100"/>
 <input id="form58_1" type="text" tabindex="58" value="" data-objref="61 0 R" data-field-name="Text58"/>
@@ -731,7 +735,7 @@ function checkOver(i) {
 <input id="email2" list="email3"  name="email2" type="text" tabindex="69" value="" data-objref="72 0 R" data-field-name="Text69"/>
 <datalist id="email3">
 </datalist>
-<input id="application2" name="application2" type="text" tabindex="70" value="" data-objref="73 0 R" data-field-name="Text70"/>
+<input id="application2" name="application2" type="text" tabindex="70" value="<?php echo 'SA'.rand(00000,999999) ?>" data-objref="73 0 R" data-field-name="Text70"/>
 
 <!-- End Form Data -->
 
