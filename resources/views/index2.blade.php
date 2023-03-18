@@ -696,9 +696,9 @@ function checkOver(i) {
 <input id="form34_1" type="text" tabindex="34" value="" data-objref="37 0 R" data-field-name="Text34"/>
 <input id="form35_1" type="text" tabindex="35" value="" data-objref="38 0 R" data-field-name="Text35"/>
 <input id="form36_1" type="checkbox" tabindex="36" data-objref="39 0 R" data-field-name="Check Box36" value="Yes" imageName="formasset/1/form/39 0 R" images="110100"/>
-<input id="form37_1" type="checkbox" tabindex="37" name="package_detail" value="500" data-objref="16 0 R" data-field-name="Check Box37" imageName="formasset/1/form/16 0 R" images="110100" />
-<input id="form38_1" type="checkbox" tabindex="38"  name="package_detail" value="1000" data-objref="31 0 R" data-field-name="Check Box38" imageName="formasset/1/form/16 0 R" images="110100" />
-<input id="form39_1" type="checkbox" tabindex="39"  name="package_detail"  value="2000" data-objref="42 0 R" data-field-name="Check Box39" imageName="formasset/1/form/16 0 R" images="110100" />
+<input id="form37_1" type="checkbox" tabindex="37" value="500" name="package_detail" value="500" data-objref="16 0 R" data-field-name="Check Box37" imageName="formasset/1/form/16 0 R" images="110100" />
+<input id="form38_1" type="checkbox" tabindex="38"   value="1000"  name="package_detail" value="1000" data-objref="31 0 R" data-field-name="Check Box38" imageName="formasset/1/form/16 0 R" images="110100" />
+<input id="form39_1" type="checkbox" tabindex="39"   value="2000" name="package_detail"  value="2000" data-objref="42 0 R" data-field-name="Check Box39" imageName="formasset/1/form/16 0 R" images="110100" />
 <input id="form40_1" type="text" tabindex="40" value="" data-objref="43 0 R" data-field-name="Text40"/>
 <input id="form41_1" type="checkbox" tabindex="41" data-objref="44 0 R" data-field-name="Check Box41" value="Yes" imageName="formasset/1/form/30 0 R" images="110100"/>
 <input id="form42_1" type="checkbox" tabindex="42" value="Yes" data-objref="45 0 R" data-field-name="Check Box42" imageName="formasset/1/form/45 0 R" images="110100" />
