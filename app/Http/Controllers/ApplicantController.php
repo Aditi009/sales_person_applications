@@ -55,6 +55,10 @@ class ApplicantController extends Controller
         'mobile_no2'         => 'required',
         'application_id1'    => 'required',
         'application2'    => 'required',
+        'sale_amount'     => 'required',
+        'service_product' => 'required',
+        'package_detail'  => 'required',
+        'type'            => 'required'
 
         
 
