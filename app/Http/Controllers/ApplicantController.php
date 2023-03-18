@@ -102,29 +102,36 @@ class ApplicantController extends Controller
             $app1->save();
             }
 
-            $app1 = new Applicant();
-            $app1->applicant_type = 2;
-            $app1->title = $request->title2;
-            $app1->dob = $request->dob2;
-            $app1->name = $request->name2;
-            $app1->post_or_zip = $request->post2;
-            $app1->address = $request->address2;
-            $app1->customer_id = $request->customer_id2;
-            $app1->application_id = $request->application2;
-            $app1->gender = $request->gender2;
-            $app1->phone_no = $request->phone_no2;
-            $app1->mobile_no = $request->mobile_no2;
-            $app1->email = $request->email2;
-            $app1->application_id = $request->application_id2;
+            $app2 = new Applicant();
+            $app2->applicant_type = 2;
+            $app2->title = $request->title2;
+            $app2->dob = $request->dob2;
+            $app2->name = $request->name2;
+            $app2->post_or_zip = $request->post2;
+            $app2->address = $request->address2;
+            $app2->customer_id = $request->customer_id2;
+            $app2->application_id = $request->application2;
+            $app2->gender = $request->gender2;
+            $app2->phone_no = $request->phone_no2;
+            $app2->mobile_no = $request->mobile_no2;
+            $app2->email = $request->email2;
+            $app2->application_id = $request->application_id2;
             $email2exist=Applicant::where('email',$request->email2)->orWhere('mobile_no',$request->mobile_no2)->first();
             if(!$email2exist)
             {
-            $app1->save();
+            $app2->save();
             }
 
             $application = new Application();
             $application->type = $request->type;
-            $application->applicant_id =  $app1->id;
+            $application->applicant_id =  $app1->id?$app1->id:$email1exist->id;
+            $application->applicant_id2 =  $app2->id?$app2->id:$email2exist->id;
+            $application->service_product=$request->service_product;
+            $application->sale_amount=$request->sale_amount;
+            $application->package_details=$request->package_detail
+            ;
+
+
             $application->save();
             
             $data['redirect_url']   = route('index');
